@@ -141,7 +141,13 @@ $\implies x^T A x=\sum_{i=1}^n\beta_i\beta_i\alpha_i$
 
 6. \grade{1} Let $X$ and $Y$ be real independent random variables with PDFs given by $f$ and $g$, respectively. Let $h$ be the PDF of the random variable $Z = X+Y$.
 \begin{enumerate}
-	\item Derive a general expression for $h$ in terms of $f$ and $g$
+	\item Derive a general expression for $h$ in terms of $f$ and $g$\\
+	\textbf{Answer:}\\
+	$\P(Z=z)=\sum_{x+y=z} \P(X=x)\P(Y=y)$\\
+	Generalize to PDFS\\
+	$h(z)=\int_{x+y=z} f(x)g(y)dxdy$\\
+	$h(z)=\int_{-\infty}^{\infty} f(x)g(z-x)dx$\\
+	
 	\item If $X$ and $Y$ are both independent and uniformly distributed on $[0,1]$ (i.e. $f(x)=g(x)=1$ for $x \in [0,1]$ and $0$ otherwise) what is $h$, the PDF of $Z=X+Y$?
 	\item For these given explicit distributions, what is $\P(X \leq 1/2 | X+Y\geq 5/4)$?
 \end{enumerate}
