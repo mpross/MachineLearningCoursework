@@ -6,6 +6,7 @@
 \usepackage{url}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{fancyhdr}
+\usepackage{listings}
 \newcommand{\field}[1]{\mathbb{#1}}
 \newcommand{\1}{\mathbf{1}}
 \newcommand{\E}{\mathbb{E}} 
@@ -210,8 +211,52 @@ We will study this phenomenon empirically (you will use the Python packages Nump
 Define $Y^{(k)} = \frac{1}{\sqrt{k}} \sum_{i=1}^k B_i$ where each $B_i$ is equal to $-1$ and $1$ with equal probability.
 It is easy to verify (you should) that $\frac{1}{\sqrt{k}} B_i$ is zero-mean and has variance $1/k$.
 \begin{enumerate}
-	\item For $i=1,\dots,n$ let $Z_i \sim \mathcal{N}(0,1)$. If $F(x)$ is the true CDF from which each $Z_i$ is drawn (i.e., Gaussian) and $\widehat{F}_n(x) = \frac{1}{n} \sum_{i=1}^n \1\{ Z_i \leq x)$, use the homework problem above to choose $n$ large enough such that $\sup_x \sqrt{\E[ (\widehat{F}_n(x)-F(x))^2 ]} \leq 0.0025$, and plot $\widehat{F}_n(x)$ from $-3$ to $3$. (Hint: use \texttt{Z=numpy.random.randn(n)} to generate the random variables, and \texttt{import matplotlib.pyplot as plt};\\ \texttt{plt.step(sorted(Z), np.arange(1,n+1)/float(n))} to plot).
-	\item For each $k \in \{1, 8, 64, 512\}$ generate $n$ independent copies $Y^{(k)}$ and plot their empirical CDF on the same plot as part a. (Hint: you can use $\texttt{np.sum(np.sign(np.random.randn(n, k))*np.sqrt(1./k), axis=1)}$ to generate $n$ of the $Y^{(k)}$ random variables.)
+	\item For $i=1,\dots,n$ let $Z_i \sim \mathcal{N}(0,1)$. If $F(x)$ is the true CDF from which each $Z_i$ is drawn (i.e., Gaussian) and $\widehat{F}_n(x) = \frac{1}{n} \sum_{i=1}^n \1\{ Z_i \leq x)$, use the homework problem above to choose $n$ large enough such that $\sup_x \sqrt{\E[ (\widehat{F}_n(x)-F(x))^2 ]} \leq 0.0025$, and plot $\widehat{F}_n(x)$ from $-3$ to $3$. (Hint: use \texttt{Z=numpy.random.randn(n)} to generate the random variables, and \texttt{import matplotlib.pyplot as plt};\\ \texttt{plt.step(sorted(Z), np.arange(1,n+1)/float(n))} to plot).\\
+	\textbf{Answer:}
+	\begin{lstlisting}[language=Python]
+	import matplotlib.pyplot as plt
+	import numpy as np
+	
+	supMax=0.0025
+	n=int(1.0/(2.0*supMax)**2)
+	Z=np.random.randn(n)
+	
+	plt.step(sorted(Z),np.arange(1,n+1)/float(n))
+	plt.xlabel("Observations")
+	plt.ylabel("Probability")
+	plt.xlim((-3,3))
+	plt.ylim((0,1))
+	plt.grid()
+	plt.show()
+
+	\end{lstlisting}
+	\item For each $k \in \{1, 8, 64, 512\}$ generate $n$ independent copies $Y^{(k)}$ and plot their empirical CDF on the same plot as part a. (Hint: you can use $\texttt{np.sum(np.sign(np.random.randn(n, k))*np.sqrt(1./k), axis=1)}$ to generate $n$ of the $Y^{(k)}$ random variables.)\\
+	\textbf{Answer:}
+	\begin{lstlisting}[language=Python]
+	import matplotlib.pyplot as plt
+	import numpy as np
+
+	supMax=0.0025
+		n=int(1.0/(2.0*supMax)**2)
+	Z=np.random.randn(n)
+
+	k=[1,8,64,512]
+	i=1000
+	for j in range(len(k)):
+		x=np.sum(np.sign(np.random.randn(i, k[j]))*np.sqrt(1./k[j]), axis=1)
+		plt.step(sorted(x),np.arange(1,i+1)/float(i))
+	
+	plt.step(sorted(Z),np.arange(1,n+1)/float(n))
+	plt.xlabel("Observations")
+	plt.ylabel("Probability")
+	plt.xlim((-3,3))
+	plt.ylim((0,1))
+	k.append('Gaussian')
+	plt.legend(k)
+	plt.grid()
+	plt.show()
+
+\end{lstlisting}
 \end{enumerate}
 Be sure to always label your axes. 
 Your plot should look something like the following (Tip: checkout \texttt{seaborn} for instantly better looking plots.)

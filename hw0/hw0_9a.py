@@ -8,6 +8,9 @@ Z=np.random.randn(n)
 plt.step(sorted(Z),np.arange(1,n+1)/float(n))
 plt.xlabel("Observations")
 plt.ylabel("Probability")
+plt.xlim((-3,3))
+plt.ylim((0,1))
+plt.grid()
 plt.show()
 
 
