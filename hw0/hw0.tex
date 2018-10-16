@@ -148,7 +148,13 @@ $\implies x^T A x=\sum_{i=1}^n\beta_i\beta_i\alpha_i$
 	$h(z)=\int_{x+y=z} f(x)g(y)dxdy$\\
 	$h(z)=\int_{-\infty}^{\infty} f(x)g(z-x)dx$\\
 	
-	\item If $X$ and $Y$ are both independent and uniformly distributed on $[0,1]$ (i.e. $f(x)=g(x)=1$ for $x \in [0,1]$ and $0$ otherwise) what is $h$, the PDF of $Z=X+Y$?
+	\item If $X$ and $Y$ are both independent and uniformly distributed on $[0,1]$ (i.e. $f(x)=g(x)=1$ for $x \in [0,1]$ and $0$ otherwise) what is $h$, the PDF of $Z=X+Y$?\\
+	\textbf{Answer:}\\
+	$h(x)=  \begin{cases}
+			z-1, z\leq 0\\
+			1-z, z>0\\
+			\end{cases}$
+	
 	\item For these given explicit distributions, what is $\P(X \leq 1/2 | X+Y\geq 5/4)$?
 \end{enumerate}
 
