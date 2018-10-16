@@ -27,13 +27,15 @@ def train(X, y, lamb):
     w=np.linalg.solve(np.dot(np.transpose(X), X)+lamb*np.identity(X.shape[1]), np.dot(np.transpose(X), y))
     return w
 
-def predict():
-    return 0
+def predict(w,x):
+    y=np.dot(np.transpose(w), x)
+    return np.argmax(y)
 
 load_dataset()
 
 y_train=one_hot(labels_train)
 w=train(X_train, y_train, 1)
-print(np.nonzero(w))
+print(labels_train[10])
+print(predict(w,X_train[10]))
 
 
