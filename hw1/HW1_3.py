@@ -15,16 +15,25 @@ def load_dataset():
     X_test = X_test/255.0
 
 def one_hot(input):
-    output = []
+    output = np.zeros((input.size, 10))
     for i in range(len(input)):
-        vec = []
+        vec = np.zeros(10)
         for j in range(10):
-            vec.append(int(int(labels_train[i]) == j))
-            output.append(vec)
+            vec[j]=(int(int(labels_train[i]) == j))
+            output[i]=vec
     return output
 
+def train(X, y, lamb):
+    w=np.linalg.solve(np.dot(np.transpose(X), X)+lamb*np.identity(X.shape[1]), np.dot(np.transpose(X), y))
+    return w
+
+def predict():
+    return 0
 
 load_dataset()
 
-y=one_hot()
+y_train=one_hot(labels_train)
+w=train(X_train, y_train, 1)
+print(np.nonzero(w))
+
 
