@@ -25,8 +25,6 @@ for k in range(3):
     covar=sm/(len(x)-1)
 
     w,v=np.linalg.eig(covar)
-    print(w)
-    print(v)
     xSquiggle=np.zeros(x.shape)
     for i in range(len(x)):
         xSquiggle[i,:]=1/np.sqrt(w)*np.dot(np.transpose(v),x[i,:]-mean)

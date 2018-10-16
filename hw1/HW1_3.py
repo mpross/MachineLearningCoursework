@@ -28,14 +28,16 @@ def train(X, y, lamb):
     return w
 
 def predict(w,x):
-    y=np.dot(np.transpose(w), x)
-    return np.argmax(y)
+    y=np.dot(np.transpose(w), np.transpose(x))
+    return np.argmax(y,axis=0)
 
 load_dataset()
 
 y_train=one_hot(labels_train)
-w=train(X_train, y_train, 1)
-print(labels_train[10])
-print(predict(w,X_train[10]))
+w=train(X_train, y_train, 10**-4)
+
+print("Training Error: "+str(sum(predict(w,X_train)==labels_train)/len(X_train)*100)+"%")
+print("Testing Error: "+str(sum(predict(w,X_test)==labels_test)/len(X_test)*100)+"%")
+
 
 
