@@ -12,22 +12,23 @@ sigma[:,:,1]=np.array([[2,-1.8],[-1.8,2]])
 sigma[:,:,2]=np.array([[3,1],[1,2]])
 
 for k in range(3):
-    draw=np.random.randn(2,100)
-    w,v=np.linalg.eig(sigma[:,:,k])
+    draw = np.random.randn(2,100)
+    w, v = np.linalg.eig(sigma[:,:,k])
     print(w)
     print(v)
-    x=np.transpose(np.dot(v*np.sqrt(w)*np.linalg.inv(v),draw))+mu[:,:,k]
+    x = np.transpose(np.dot(v*np.sqrt(w)*np.linalg.inv(v),draw))+mu[:,:,k]
 
-    mean=np.sum(x,axis=0)/len(x)
-    sm=np.zeros([2,2])
+    mean = np.sum(x,axis=0)/len(x)
+    sm = np.zeros([2,2])
     for i in range(len(x)):
-        sm+=np.outer(x[i, :]-mean,x[i, :]-mean)
-    covar=sm/(len(x)-1)
+        sm += np.outer(x[i, :]-mean,x[i, :]-mean)
+    covar = sm/(len(x)-1)
 
-    w,v=np.linalg.eig(covar)
+    w, v = np.linalg.eig(covar)
     xSquiggle=np.zeros(x.shape)
+
     for i in range(len(x)):
-        xSquiggle[i,:]=1/np.sqrt(w)*np.dot(np.transpose(v),x[i,:]-mean)
+        xSquiggle[i,:] = 1/np.sqrt(w)*np.dot(np.transpose(v),x[i,:]-mean)
 
     plt.figure(k)
     plt.scatter(x[:,0],x[:,1],None,'b','^')
