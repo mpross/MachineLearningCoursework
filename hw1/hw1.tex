@@ -58,8 +58,7 @@
 \begin{document}
 \title{Homework \#1}
 \author{\normalsize{CSE 546: Machine Learning}\\
-\normalsize{Prof. Kevin Jamieson} \\
-\normalsize{Due: 10/18/18  11:59 PM}}
+\normalsize{Michael Ross}}
 \maketitle
 
 
@@ -90,6 +89,16 @@ Unless otherwise specified, if $P$ is a probability distribution and $x_1,\dots,
 % A multivariate Gaussian with mean $\mu \in \R^n$ and covariance $\Sigma \in \R^{n \times n}$ has a probability density function $p(x| \mu, \Sigma) =  \frac{1}{\sqrt{(2\pi)^n |\Sigma|}} \exp( -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) )$ which we denote as $\mathcal{N}(\mu,\Sigma)$. \\
 
 2. \grade{1}  Let $x_1,\dots,x_n \sim \text{uniform}(0,\theta)$ for some $\theta$. What is the Maximum likelihood estimate for $\theta$?\\
+\textbf{Answer:}\\
+
+$\text{uniform}(o,\theta)= 1/\theta \text{ if } 0<x<\theta \text{ and } 0 \text{ everywhere else}$\\
+
+$\mathcal{L}(\theta | x)= \prod_{i=1}^n \frac{1}{\theta}$\\
+$\text{log}(\mathcal{L}(\theta | x))= \sum_{i=1}^n \text{log}(\frac{1}{\theta})$\\
+$\text{log}(\mathcal{L}(\theta | x))= -n \text{log}({\theta})$\\
+$\frac{d}{d\theta} \text{log}(\mathcal{L}(\theta | x))= -\frac{n}{\theta}$\\
+This shows that the log likelihood decreases with increasing $\theta$ so\\
+$\widehat{\theta}=\text{max}(x_i)$\\
 
 3. \grade{2} Let $(x_1,y_1),\dots,(x_n,y_n)$ be drawn at random from some population where each $x_i \in \R^d$, $y_i \in \R$, and let $\widehat{w} = \arg\min_w \sum_{i=1}^n (y_i - w^T x_i)^2$.
 Suppose we have some test data $(\widetilde{x}_1,\widetilde{y}_1),\dots,(\widetilde{x}_m,\widetilde{y}_m)$ drawn at random from the population as the training data. 
@@ -111,16 +120,39 @@ If $\mb{X}=[x_1,\dots,x_n]^T$, $\mb{y} = [y_1,\dots,y_n]^T$, $\boldsymbol{\epsil
 \begin{align}\label{eq:ridge_soln}
 \widehat{w} = (\mb{X}^T \mb{X} + \lambda I)^{-1} \mb{X}^T \mb{y}.
 \end{align}
-Note teh notational difference between a random $X$ of $(X,Y)\sim P_{XY}$ and the $n \times d$ matrix $\mb{X}$ where each row is drawn from $P_X$.
+Note the notational difference between a random $X$ of $(X,Y)\sim P_{XY}$ and the $n \times d$ matrix $\mb{X}$ where each row is drawn from $P_X$.
 Realizing that $\mb{X}^T \mb{X} = \sum_{i=1}^n x_i x_i^T$, by the law of large numbers we have $\frac{1}{n} \mb{X}^T\mb{X} \rightarrow \Sigma$ as $n \rightarrow \infty$. 
 In your analysis assume $n$ is large and make use of the approximation $\mb{X}^T \mb{X} = n \Sigma$.
 Justify all answers.
 \begin{enumerate}
-    \item Show Equation~\eqref{eq:ridge_soln}.
+    \item Show Equation~\eqref{eq:ridge_soln}.\\
+    \textbf{Answer:}\\
+    
+    $\widehat{w} = \arg\min_w \sum_{i=1}^n (y_i - x_i^T w)^2 + \lambda \| w \|_2^2$\\
+    
+    Switching to matrix notation:\\
+    $\widehat{w} = \arg\min_w \| \mb X w-\mb y\| _2^2+ \lambda \| w \|_2^2$\\
+    
+    Set derivative to zero:\\
+    $\nabla_w (\| \mb X w-\mb y \| _2^2+ \lambda \| w \|_2^2)=0$\\
+    $2 \mb X^T(\mb X \widehat{w}  -\mb y)+ 2 \lambda \widehat{w} =0$\\
+    $ \mb X^T \mb y= \mb X^T \mb X \widehat{w}  + \lambda \widehat{w} $\\
+    $ \mb X^T \mb y= (\mb X^T \mb X + \lambda  I)\widehat{w} $\\
+    $ \widehat{w}= (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \mb y $\\
+    
     \item Show that $\widehat{w}$ of Equation~\ref{eq:ridge_soln} can also be written as 
     \begin{align*}
         \widehat{w} = w - \lambda (\mb{X}^T \mb{X}+\lambda I)^{-1} w + (\mb{X}^T \mb{X}+\lambda I)^{-1} \mb{X}^T \boldsymbol{\epsilon}
     \end{align*}
+    \textbf{Answer:}\\    
+    
+    $ \widehat{w}= (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \mb y $\\    
+    $ \widehat{w}= (\mb X^T \mb X + \lambda I)^{-1} \mb X^T (\mb X w+ \boldsymbol{\epsilon}) $\\    
+    $ \widehat{w}= (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \mb X w+ (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon} $\\
+    $ \widehat{w}= (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \mb X w+ (\mb X^T \mb X + \lambda I)^{-1} \lambda I  w - (\mb X^T \mb X + \lambda I)^{-1} \lambda I w+ (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}$\\ 
+    $ \widehat{w}= (\mb X^T \mb X + \lambda I)^{-1} (\mb X^T \mb X + \lambda I) w - (\mb X^T \mb X + \lambda I)^{-1} \lambda I w+ (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}$\\
+    $ \widehat{w}= w - (\mb X^T \mb X + \lambda I)^{-1} \lambda w+ (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}$\\
+    
     \item For general $\widehat{f}_{\mc{D}}(x)$ and $\eta(x) = \E_{Y|X}[ Y | X=x]$, we showed in class that the bias variance decomposition is stated as 
     \begin{align*}
         \E_{XY,\mc{D}}[ (Y-\widehat{f}_{\mc{D}}(X))^2] &= \E_{X}\Big[\E_{Y|X,\mc{D}}\big[(Y-\widehat{f}_{\mc{D}}(X))^2 |X=x \big] \Big]
@@ -131,10 +163,41 @@ Justify all answers.
           \underbrace{\E_{\mc{D}}[ ( \E_{\mc{D}}[\widehat{f}_{\mc{D}}(x)] - \widehat{f}_{\mc{D}}(x))^2]}_{\text{Variance}}.
     \end{align*}
     In what follows, use our particular problem setting with $\widehat{f}_{\mc{D}}(x) = \widehat{w}^T x$. \\
-    Irreducible error: What is $\E_X\Big[ \E_{Y|X}[ (Y-\eta(x))^2 | X=x] \Big]$?
+    Irreducible error: What is $\E_X\Big[ \E_{Y|X}[ (Y-\eta(x))^2 | X=x] \Big]$?\\
+    \textbf{Answer:}\\
+    
+    $\E_X\Big[ \E_{Y|X}[ (Y-\eta(x))^2 | X=x] \Big]=\E_X\Big[ \E_{Y|X}[ (X^T w+\epsilon-X^T w)^2 | X=x] \Big]$\\
+    $=\E_X\Big[ \E_{Y|X}[ (\epsilon)^2 | X=x] \Big]$\\
+    $=\E_X\Big[ \E_{Y|X}[ (\epsilon)^2 | X=x] -\E_{Y|X}[ (\epsilon) | X=x]^2 \Big]$ sinc $\E_{Y|X}[ (\epsilon) | X=x]=0$\\
+    $=\sigma ^2$
     \item Bias-squared: Use the approximation $\mb{X}^T \mb{X} = n \Sigma$ to show that 
     \begin{align*}\E_{X}\big[ (\eta(X)-\E_{\mc{D}}[\widehat{f}_{\mc{D}}(X)])^2 \big] = \sum_{i=1}^d \frac{\lambda^2 (w_i^T v_i)^2 \alpha_i}{(n \alpha_i + \lambda)^2} \leq \max_{j=1,\dots,d} \frac{\lambda^2 \alpha_j \|w\|_2^2}{(n \alpha_j + \lambda)^2} 
- \end{align*}
+ \end{align*}\\
+ \textbf{Answer:}\\
+ 
+ $\E_{X}\big[ (\eta(X)-\E_{\mc{D}}[\widehat{f}_{\mc{D}}(X)])^2 \big] =\E_{X}\big[ (X^T w-\E_{\mc{D}}[X^T \widehat{w}])^2 \big] $\\
+ $=\E_{X}\big[ (X^T w-\E_{\mc{D}}[X^T( w - (\mb X^T \mb X + \lambda I)^{-1} \lambda w+ (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon})])^2 \big] $\\
+ $=\E_{X}\big[ (X^T w-X^T w+\E_{\mc{D}}[X^T (\mb X^T \mb X + \lambda I)^{-1} \lambda w+ X^T (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}])^2 \big] $\\
+ $=\E_{X}\big[ \E_{\mc{D}}[X^T (\mb X^T \mb X + \lambda I)^{-1} \lambda w]^2 \big] $ since $\mb X^T$ and $\boldsymbol{\epsilon}$ are mean zero and independent\\
+ $=\E_{X}\big[ \E_{\mc{D}}[X^T (n \Sigma+ \lambda I)^{-1} \lambda w]^2 \big] $\\
+  $=\E_{X}\big[ \E_{\mc{D}}[X^T (n \sum_{i=1}^d \alpha_i v_i v_i^T+ \lambda I)^{-1} \lambda w]^2 \big] $\\
+  
+  $\sum_{i=1}^d v_i v_i^T=I$ by definition \\
+  
+  $=\E_{X}\big[ \E_{\mc{D}}[X^T (\sum_{i=1}^d (n\alpha_i + \lambda)v_i v_i^T )^{-1} \lambda w]^2 \big] $\\
+  
+  Since the eigenvalues of $A^{-1}$ are the reciprocals of the eigenvalues of $A$\\
+  
+   $=\E_{X}\big[ \E_{\mc{D}}[X^T \sum_{i=1}^d v_i v_i^T \lambda w /(n\alpha_i + \lambda) ]^2 \big] $\\
+   
+   Drop the  $\E_{\mc{D}}$ since everything is now independent of the $D$\\
+   
+   $=\E_{X}\big[ \sum_{i, j} \lambda^2 w^T v_i v_i^T  X X^T v_j v_j^T w /((n\alpha_i + \lambda)(n\alpha_j + \lambda)) \big] $\\
+   $=\E_{X}\big[ \sum_{i, j, k} \alpha_k \lambda^2 w^T v_i v_i^T  v_k v_k^T v_j v_j^T w /((n\alpha_i + \lambda)(n\alpha_j + \lambda)) \big] $\\
+   $=\E_{X}\big[ \sum_{i, j, k} \alpha_k \lambda^2 w^T v_i \delta_{i,k} \delta_{k,j} v_j^T w /((n\alpha_i + \lambda)(n\alpha_j + \lambda)) \big] $ due to orthonormality of eigenvectors\\
+   $=\E_{X}\big[ \sum_{i=1}^d \alpha_i \lambda^2 w^T v_i v_i^T w /(n\alpha_i + \lambda) ^2\big] $\\
+   $= \sum_{i=1}^d \alpha_i \lambda^2 (w^T v_i)^2 /(n\alpha_i + \lambda) ^2 $\\
+
     \item Variance: Use the approximation $\mb{X}^T \mb{X} = n \Sigma$ to show that   
     \begin{align*}
     \E_{X}\big[ \E_{\mc{D}}[ ( \E_{\mc{D}}[\widehat{f}_{\mc{D}}(X)] - \widehat{f}_{\mc{D}}(X))^2] \big] = \sum_{i=1}^d \frac{\sigma^2 \alpha_i^2 n}{(\alpha_i n + \lambda)^2} \leq \frac{d \sigma^2 \alpha_1^2 n}{(\alpha_1 n + \lambda)^2}
@@ -190,6 +253,20 @@ and each data point $x_i \in \R^d$. $k$ denotes
 the number of classes which is in this case equal to 10. Note that $\|W\|_{F}$ corresponds to the Frobenius norm of $W$, i.e. $\|\text{vec}(W)\|_2^2$.
 
 Derive a closed form for $\widehat{W}$.
+
+\textbf{Answer:}\\
+
+$\|W\|_F^2=Tr(W^T W)$\\
+$\nabla_W \|W\|_F^2=2 W$\\
+
+$\widehat{W} = \text{argmin}_{W \in \R^{d \times k}} \sum_{i=0}^{n} \| W^Tx_{i} - y_{i} \|^{2}_{2} + \lambda \|W\|_{F}^{2}$\\
+
+Switching to matrix notation:
+
+$\widehat{W} = \text{argmin}_{W \in \R^{d \times k}} \| W^T \mb X- \mb Y \|^{2}_{2} + \lambda \|W\|_{F}^{2}$\\
+$\nabla_W (\| W^T \mb X- \mb Y \|^{2}_{2} + \lambda \|W\|_{F}^{2})=0$\\
+$2 \mb X^T (\widehat{W}^T \mb X- \mb Y) + 2 \lambda \widehat{W}=0$\\
+$\widehat{W}=(\mb X^T \mb X +\lambda I)^{-1} \mb X^T \mb Y$
 
 \item
 As as first step we need to choose the vectors $y_i \in \mathbb{R}^k$ by converting the original labels (which are in $\left\{0,\ldots,9\right\})$ to

@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from mnist import MNIST
 import random
 
+from numpy.core.multiarray import ndarray
+
 X_train = []
 X_test = []
 labels_train = []
@@ -33,24 +35,32 @@ def train(X, y, lamb):
     return w
 
 
-def predict(w,x ):
+def predict(w, x):
     y=np.dot(np.transpose(w), np.transpose(x))
     return np.argmax(y, axis=0)
 
+def generateTransform(inpt, p, sigma):
+    G = sigma*np.random.randn(inpt.shape[1], p)
+    b = np.random.uniform(0, 2*np.pi, (p, 1))
 
-def transform(inpt,p,sigma):
-    G = sigma*np.random.randn(inpt.shape[1],p)
-    b = np.random.uniform(0, 2*np.pi, (p,1))
-    out = np.cos(np.dot(np.transpose(G), np.transpose(inpt))+b)
+    return G, b
+
+
+def transform(inpt, G, b):
+    out = np.transpose(np.cos(np.dot(np.transpose(G), np.transpose(inpt))+b))
     return out
 
 
-def split(inpt,frac):
-    index=random.sample(range(inpt.shape[0]),int(inpt.shape[0]*frac))
-    major=inpt[index]
-    print(index)
-    minor=np.delete(inpt, index, 0)
-    return major, minor
+def split(x, y, ylist, frac):
+    index = random.sample(range(x.shape[0]), int(x.shape[0]*frac))
+    xmajor = x[index]
+    xminor = np.delete(x, index, 0)
+    ymajor = y[index]
+    yminor = np.delete(y, index, 0)
+    listmajor = ylist[index]
+    listminor = np.delete(ylist, index, 0)
+
+    return xmajor, xminor, ymajor, yminor, listmajor, listminor
 
 
 load_dataset()
@@ -59,19 +69,35 @@ y_train=one_hot(labels_train)
 w = train(X_train, y_train, 10**-4)
 
 print("No transformation")
-print("Training Error: "+str(sum(predict(w,X_train)==labels_train)/len(X_train)*100)+"%")
-print("Testing Error: "+str(sum(predict(w,X_test)==labels_test)/len(X_test)*100)+"%")
+print("Training Accuracy: "+str(sum(predict(w, X_train) == labels_train)/len(X_train)*100)+"%")
+print("Testing Accuracy: "+str(sum(predict(w, X_test) == labels_test)/len(X_test)*100)+"%")
 
-trainX, valX=split(X_train, 0.8)
+pmax=3*10**3
+trainErr = np.zeros((pmax, 1))
+valErr = np.zeros((pmax, 1))
+for p in range(1, pmax):
+    G, b= generateTransform(X_train, p, 0.01)
+    transX = transform(X_train, G, b)
+    trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
+    w= train(trainX, trainY, 10**-4)
+    trainErr[p] = sum(predict(w, trainX) == trainList) / len(trainX)*100
+    valErr[p] = sum(predict(w, valX) == valList) / len(valX)*100
 
-print(X_train.shape)
-print(trainX.shape)
-print(valX.shape)
 
-transX=transform(trainX, 10, 0.01)
-
+pOpt = np.argmax(valErr)
+G, b = generateTransform(X_train, p, 0.01)
+transX = transform(X_train, G, b)
+trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
+w = train(trainX, trainY, 10**-4)
 
 print("With transformation")
-print("Training Error: "+str(sum(predict(w,X_train)==labels_train)/len(X_train)*100)+"%")
-print("Testing Error: "+str(sum(predict(w,X_test)==labels_test)/len(X_test)*100)+"%")
+print("Training Accuracy: "+str(sum(predict(w, trainX) == trainList)/len(trainX)*100)+"%")
+print("Testing Accuracy: "+str(sum(predict(w, transform(X_test, G, b)) == labels_test)/len(X_test)*100)+"%")
 
+plt.plot(trainErr)
+plt.plot(valErr)
+plt.grid()
+plt.ylabel("Accuracy (%)")
+plt.xlabel("p")
+plt.legend(("Training Accuracy", "Validation Accuracy"))
+plt.show()
