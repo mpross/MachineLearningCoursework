@@ -1,6 +1,7 @@
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from mnist import MNIST
+import random
 
 X_train = []
 X_test = []
@@ -44,17 +45,33 @@ def transform(inpt,p,sigma):
     return out
 
 
+def split(inpt,frac):
+    index=random.sample(range(inpt.shape[0]),int(inpt.shape[0]*frac))
+    major=inpt[index]
+    print(index)
+    minor=np.delete(inpt, index, 0)
+    return major, minor
+
+
 load_dataset()
 
 y_train=one_hot(labels_train)
 w = train(X_train, y_train, 10**-4)
 
-transX=transform(X_train, 10, 0.01)
-
-print(transX.shape)
-
+print("No transformation")
 print("Training Error: "+str(sum(predict(w,X_train)==labels_train)/len(X_train)*100)+"%")
 print("Testing Error: "+str(sum(predict(w,X_test)==labels_test)/len(X_test)*100)+"%")
 
+trainX, valX=split(X_train, 0.8)
 
+print(X_train.shape)
+print(trainX.shape)
+print(valX.shape)
+
+transX=transform(trainX, 10, 0.01)
+
+
+print("With transformation")
+print("Training Error: "+str(sum(predict(w,X_train)==labels_train)/len(X_train)*100)+"%")
+print("Testing Error: "+str(sum(predict(w,X_test)==labels_test)/len(X_test)*100)+"%")
 
