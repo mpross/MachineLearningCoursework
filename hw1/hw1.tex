@@ -12,6 +12,7 @@
 \usepackage[usenames,dvipsnames]{color}
 % \usepackage[pdfborder={0 0 1},colorlinks=true,citecolor=black,plainpages=false]{hyperref}
 \usepackage{fancyhdr}
+\usepackage{listings}
 %\usepackage[ruled]{algorithm2e}
 %\usepackage{multirow}
 \newcommand{\field}[1]{\mathbb{#1}}
@@ -89,6 +90,7 @@ Unless otherwise specified, if $P$ is a probability distribution and $x_1,\dots,
 % A multivariate Gaussian with mean $\mu \in \R^n$ and covariance $\Sigma \in \R^{n \times n}$ has a probability density function $p(x| \mu, \Sigma) =  \frac{1}{\sqrt{(2\pi)^n |\Sigma|}} \exp( -\frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu) )$ which we denote as $\mathcal{N}(\mu,\Sigma)$. \\
 
 2. \grade{1}  Let $x_1,\dots,x_n \sim \text{uniform}(0,\theta)$ for some $\theta$. What is the Maximum likelihood estimate for $\theta$?\\
+
 \textbf{Answer:}\\
 
 $\text{uniform}(o,\theta)= 1/\theta \text{ if } 0<x<\theta \text{ and } 0 \text{ everywhere else}$\\
@@ -126,6 +128,7 @@ In your analysis assume $n$ is large and make use of the approximation $\mb{X}^T
 Justify all answers.
 \begin{enumerate}
     \item Show Equation~\eqref{eq:ridge_soln}.\\
+    
     \textbf{Answer:}\\
     
     $\widehat{w} = \arg\min_w \sum_{i=1}^n (y_i - x_i^T w)^2 + \lambda \| w \|_2^2$\\
@@ -144,6 +147,7 @@ Justify all answers.
     \begin{align*}
         \widehat{w} = w - \lambda (\mb{X}^T \mb{X}+\lambda I)^{-1} w + (\mb{X}^T \mb{X}+\lambda I)^{-1} \mb{X}^T \boldsymbol{\epsilon}
     \end{align*}
+    
     \textbf{Answer:}\\    
     
     $ \widehat{w}= (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \mb y $\\    
@@ -168,11 +172,12 @@ Justify all answers.
     
     $\E_X\Big[ \E_{Y|X}[ (Y-\eta(x))^2 | X=x] \Big]=\E_X\Big[ \E_{Y|X}[ (X^T w+\epsilon-X^T w)^2 | X=x] \Big]$\\
     $=\E_X\Big[ \E_{Y|X}[ (\epsilon)^2 | X=x] \Big]$\\
-    $=\E_X\Big[ \E_{Y|X}[ (\epsilon)^2 | X=x] -\E_{Y|X}[ (\epsilon) | X=x]^2 \Big]$ sinc $\E_{Y|X}[ (\epsilon) | X=x]=0$\\
+    $=\E_X\Big[ \E_{Y|X}[ (\epsilon)^2 | X=x] -\E_{Y|X}[ (\epsilon) | X=x]^2 \Big]$ since $\E_{Y|X}[ (\epsilon) | X=x]=0$\\
     $=\sigma ^2$
     \item Bias-squared: Use the approximation $\mb{X}^T \mb{X} = n \Sigma$ to show that 
     \begin{align*}\E_{X}\big[ (\eta(X)-\E_{\mc{D}}[\widehat{f}_{\mc{D}}(X)])^2 \big] = \sum_{i=1}^d \frac{\lambda^2 (w_i^T v_i)^2 \alpha_i}{(n \alpha_i + \lambda)^2} \leq \max_{j=1,\dots,d} \frac{\lambda^2 \alpha_j \|w\|_2^2}{(n \alpha_j + \lambda)^2} 
  \end{align*}\\
+ 
  \textbf{Answer:}\\
  
  $\E_{X}\big[ (\eta(X)-\E_{\mc{D}}[\widehat{f}_{\mc{D}}(X)])^2 \big] =\E_{X}\big[ (X^T w-\E_{\mc{D}}[X^T \widehat{w}])^2 \big] $\\
@@ -202,6 +207,35 @@ Justify all answers.
     \begin{align*}
     \E_{X}\big[ \E_{\mc{D}}[ ( \E_{\mc{D}}[\widehat{f}_{\mc{D}}(X)] - \widehat{f}_{\mc{D}}(X))^2] \big] = \sum_{i=1}^d \frac{\sigma^2 \alpha_i^2 n}{(\alpha_i n + \lambda)^2} \leq \frac{d \sigma^2 \alpha_1^2 n}{(\alpha_1 n + \lambda)^2}
     \end{align*}
+    
+    \textbf{Answer:}\\
+    
+    $\E_{X}\big[ \E_{\mc{D}}[ ( \E_{\mc{D}}[\widehat{f}_{\mc{D}}(X)] - \widehat{f}_{\mc{D}}(X))^2] \big] = \E_{X}\big[ \E_{\mc{D}}[ ( \E_{\mc{D}}[x^T \widehat{w}] - x^T \widehat{w})^2] \big] $\\
+    $= \E_{X}\big[ \E_{\mc{D}}[ ( \E_{\mc{D}}[x^T(w - (\mb X^T \mb X + \lambda I)^{-1} \lambda w+ (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon})] - x^T (w - (\mb X^T \mb X + \lambda I)^{-1} \lambda w+ (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}))^2] \big] $\\
+    
+    Since $X^T$ and w is are independent of the data
+    
+    $= \E_{X}\big[ \E_{\mc{D}}[ (x^T w +\E_{\mc{D}}[-x^T (\mb X^T \mb X + \lambda I)^{-1} \lambda w+x^T (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}] - x^T w +x^T (\mb X^T \mb X + \lambda I)^{-1} \lambda w-x^T (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}))^2] \big] $\\
+    
+    Since $\mb{X}^T$ and $\mb{\epsilon}$ are independent and mean zero
+    
+    $= \E_{X}\big[ \E_{\mc{D}}[ (\E_{\mc{D}}[-x^T (\mb X^T \mb X + \lambda I)^{-1} \lambda w] +x^T (\mb X^T \mb X + \lambda I)^{-1} \lambda w-x^T (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}))^2] \big] $\\
+    
+    Substitution from last part\\
+    $= \E_{X}\big[ \E_{\mc{D}}[ (-X^T \sum_{i=1}^d v_i v_i^T \lambda w /(n\alpha_i + \lambda) +X^T \sum_{i=1}^d v_i v_i^T \lambda w /(n\alpha_i + \lambda) -x^T (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}))^2] \big] $\\
+    
+    $= \E_{X}\big[ \E_{\mc{D}}[ (-X^T (\mb X^T \mb X + \lambda I)^{-1} \mb X^T \boldsymbol{\epsilon}))^2] \big] $\\
+    $= \E_{X}\big[ \E_{\mc{D}}[ (-X^T \sum_{i=1}^d v_i v_i^T  \mb X^T \boldsymbol{\epsilon}/(n\alpha_i + \lambda))^2] \big] $\\
+    $= \E_{X}\big[ \E_{\mc{D}}[ \sum_{i,j} X^T  v_i v_i^T \mb X^T \boldsymbol{\epsilon} \boldsymbol{\epsilon}^T \mb X v_j v_j^T X  /((n\alpha_i + \lambda) (n\alpha_j + \lambda))] \big] $\\
+    $= \E_{X}\big[ \E_{\mc{D}}[ \sum_{i,j,k} X^T  v_i v_i^T \mb X^T \sigma^2  v_k v_k^T \mb X v_j v_j^T X  /((n\alpha_i + \lambda) (n\alpha_j + \lambda))] \big] $\\
+    $= \E_{X}\big[ \E_{\mc{D}}[ \sum_{i,j,k} \sigma^2 X^T  v_i v_i^T \mb X^T \mb X  v_k v_k^T v_j v_j^T X  /((n\alpha_i + \lambda) (n\alpha_j + \lambda))] \big] $\\
+    $= \E_{X}\big[ \E_{\mc{D}}[ \sum_{i,j,k,l} \sigma^2 X^T  v_i v_i^T n \alpha_l v_l v_l^T  v_k v_k^T v_j v_j^T X  /((n\alpha_i + \lambda) (n\alpha_j + \lambda))] \big] $\\
+    $= \E_{X}\big[ \E_{\mc{D}}[ \sum_{i,j,k,l} n \alpha_l \sigma^2 X^T  v_i \delta_{i,l} \delta_{l,k} \delta_{k,j} v_j^T X  /((n\alpha_i + \lambda) (n\alpha_j + \lambda))] \big] $\\
+    $= \E_{X}\big[ \E_{\mc{D}}[ \sum_{i} n \alpha_i \sigma^2 X^T  v_i v_i^T X  /(n\alpha_i + \lambda)^2 \big] $\\    
+    $= \E_{X}\big[ \E_{\mc{D}}[ \sum_{i} n \alpha_i \sigma^2 v_i^T  X  X^T v_i  /(n\alpha_i + \lambda)^2 \big] $\\    
+    $= \E_{X}\big[ \E_{\mc{D}}[ \sum_{i,j} n \alpha_i \sigma^2 v_i ^T \alpha_j  v_j v_j^T v_i  /(n\alpha_i + \lambda)^2 \big] $\\
+    $= \sum_{i} n \alpha_i^2 \sigma^2 /(n\alpha_i + \lambda)^2 $\\
+    
     \item Assume $\Sigma= \alpha_1 \, I$ for some $\alpha_1 >0$. Show that for the approximation $\mb{X}^T \mb{X} = n \Sigma$ we have
     \begin{align*}
     \E_{XY,\mc{D}}[ (Y-\widehat{f}_{\mc{D}}(X))^2] = \sigma^2 + \frac{\lambda^2 \alpha_1 \|w\|_2^2}{(\alpha_1 n+\lambda)^2} + \frac{d \sigma^2 \alpha_1^2 n}{(\alpha_1 n + \lambda)^2}
@@ -209,12 +243,25 @@ Justify all answers.
     What is the $\lambda^\star$ that minimizes this expression? 
     In a sentence each describe how varying each parameter (e.g., $\|w\|_2$, $d$, $\sigma^2$) affects the size of $\lambda^\star$ and if this makes intuitive sense.
     Plug this $\lambda^\star$ back into the expression and comment on how this result compares to the $\lambda=0$ solution. It may be helpful to use $\tfrac{1}{2}(a+b) \leq \max\{a,b\} \leq a+b$ for any $a,b>0$ to simplify the expression.  
+    
+    \textbf{Answer:}\\
+    
+    $\E_{Y|X,\mc{D}}\big[(Y-\widehat{f}_{\mc{D}}(X))^2 |X=x \big] = \E_{Y|X}[ (Y-\eta(x))^2 | X=x] + (\eta(x)-\E_{\mc{D}}[\widehat{f}_{\mc{D}}(x)])^2 + \E_{\mc{D}}[ ( \E_{\mc{D}}[\widehat{f}_{\mc{D}}(x)] - \widehat{f}_{\mc{D}}(x))^2]$
+    $=\sigma^2 +\sum_{i=1}^d \alpha_i \lambda^2 (w^T v_i)^2 /(n\alpha_i + \lambda) ^2 +\sum_{i=1}^d n \alpha_i^2 \sigma^2 /(n\alpha_i + \lambda)^2$\\
+    
+    If $\Sigma =\alpha_1 I$ then $v_i$ are vectors with 1 in the i-th element and zeroes everywhere else.\\
+    $=\sigma^2 +\frac{\alpha_1 \lambda^2}  {(n\alpha_1 + \lambda) ^2} \sum_{i=1}^d (w_i)^2+d n \alpha_1^2 \sigma^2 /(n\alpha_1 + \lambda)^2$\\
+     $=\sigma^2 +\alpha_1 \lambda^2 \|w\|_2^2 /(n\alpha_1 + \lambda) ^2 +d n \alpha_1^2 \sigma^2 /(n\alpha_1 + \lambda)^2$\\
+    
+    
     \item Assume that $\alpha_1 > \alpha_2 = \alpha_3 = \dots = \alpha_d$ and furthermore, that $w/\|w\|_2 = v_1$. Show that for the approximation $\mb{X}^T \mb{X} = n \Sigma$ we have
     \begin{align*}
     \E_{XY,\mc{D}}[ (Y-\widehat{f}_{\mc{D}}(X))^2] = \sigma^2 + \frac{\lambda^2 \alpha_1 \|w\|_2^2}{(\alpha_1 n+\lambda)^2} + \frac{\sigma^2 n \alpha_1^2}{(\alpha_1 n + \lambda)^2} + \frac{\sigma^2 n \alpha_2^2 (d-1)}{(\alpha_2 n + \lambda)^2}
     \end{align*}
     It can be shown that $\lambda^\star = \frac{\sigma^2 + \sigma^2(d-1)\alpha_1/\alpha_2}{\|w\|_2^2}$ approximately minimizes this expression. 
     In a sentence each describe if this makes intuitive sense, comparing to the solution of the last problem.
+    
+    
     \item As $\lambda$ increases, how does the bias and variance terms behave?
      
 \end{enumerate}
@@ -272,13 +319,18 @@ $\widehat{W}=(\mb X^T \mb X +\lambda I)^{-1} \mb X^T \mb Y$
 As as first step we need to choose the vectors $y_i \in \mathbb{R}^k$ by converting the original labels (which are in $\left\{0,\ldots,9\right\})$ to
 vectors.
 We will use the one-hot encoding of the labels, i.e. the original label $j \in \{0, \ldots, 9\}$ is mapped to the standard basis vector $e_j$.
-To classify a point $x_i$ we will use the rule $\arg\max_{j=0,\dots,9} \widehat{W}^T x_i$.
+To classify a point $x_i$ we will use the rule $\arg\max_{j=0,\dots,9} \widehat{W}^T x_i$.\\
 
 \item
 Code up a function called \verb|train| that returns $\widehat{W}$ that takes as input $X \in\R^{n \times d}$, $y \in \{0,1\}^{n \times k}$, and $\lambda > 0$.
 Code up a function called \verb|predict| that takes as input $W \in \R^{d \times k}$, $X' \in\R^{m \times d}$ and returns an $m$-length vector with the $i$th entry equal to $\arg\max_{j=0,\dots,9} W^T x_i'$ where $x_i'$ is a column vector representing the $i$th example from $X'$.\\
 
 Train $\widehat{W}$ on the MNIST training data with $\lambda = 10^{-4}$ and make label predictions on the test data. What is the training and testing classification accuracy (they should both be about $85\%$)? 
+
+\textbf{Answer:}
+
+Training Accuracy: 85.195\%\\
+Testing Accuracy: 85.34\%
 
 \item We just fit a classifier that was linear in the pixel intensities to the MNIST data.
 For classification of digits the raw pixel values are very, very bad features: it's pretty hard to separate digits with linear functions in pixel space.
@@ -294,7 +346,10 @@ The big question is: \emph{how do we choose $p$?} Cross-validation, of course!\\
 Randomly partition your training set into proportions 80/20 to use as a new training set and validation set, respectively. 
 Using the \verb|train| function you wrote above, train a $\widehat{W}^{p}$ for different values of $p$ and plot the classification training error and validation error on a single plot with $p$ on the $x$-axis. 
 Be careful, your computer may run out of memory and slow to a crawl if $p$ is too large ($p\leq 6000$ should fit into 4 GB of memory). 
-You can use the same value of $\lambda$ as above but feel free to study the effect of using different values of $\lambda$ and $\sigma^2$ for fun.
+You can use the same value of $\lambda$ as above but feel free to study the effect of using different values of $\lambda$ and $\sigma^2$ for fun.\\
+
+\textbf{Answer:}\\
+\includegraphics[width=4in]{CrossVal.png}
 
 \item Instead of reporting just the classification test error, which is an unbiased estimate of the \emph{true} error, we would like to report a \emph{confidence interval} around the test error that contains the true error.
 For any $\delta \in (0,1)$, it follows from Hoeffding's inequality that if $X_i$ for all $i=1,\dots,m$ are i.i.d. random variables with $X_i \in [a,b]$ and $\E[X_i] = \mu$, then with probability at least $1-\delta$ 
@@ -306,6 +361,116 @@ We will use the above equation to construct a confidence interval around our tru
 Let $\widehat{p}$ be the value of $p$ that approximately minimizes the validation error on the plot you just made and use $\widehat{W}^{\widehat{p}}$ to compute the classification test accuracy, which we will denote as $E_{test}$. 
 Use Hoeffding's inequality, above, to compute a confidence interval that contains $\E[E_{test}]$ (i.e., the \emph{true} error) with probability at least $0.95$ (i.e., $\delta=0.05$).
 Report $E_{test}$ and the confidence interval. 
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+from mnist import MNIST
+import random
+import time
+
+from numpy.core.multiarray import ndarray
+
+X_train = []
+X_test = []
+labels_train = []
+labels_test = []
+
+
+def load_dataset():
+    global X_train, X_test, labels_test, labels_train
+    mndata = MNIST('./python-mnist/data/')
+    X_train, labels_train = map(np.array, mndata.load_training())
+    X_test, labels_test = map(np.array, mndata.load_testing())
+    X_train = X_train/255.0
+    X_test = X_test/255.0
+
+
+def one_hot(inpt):
+    output = np.zeros((inpt.size, 10))
+    for i in range(len(inpt)):
+        vec = np.zeros(10)
+        for j in range(10):
+            vec[j] = int(int(inpt[i]) == j)
+            output[i] = vec
+    return output
+
+
+def train(X, y, lamb):
+    w = np.linalg.solve(np.dot(np.transpose(X), X)+lamb*np.identity(X.shape[1]), np.dot(np.transpose(X), y))
+    return w
+
+
+def predict(w, x):
+    y=np.dot(np.transpose(w), np.transpose(x))
+    return np.argmax(y, axis=0)
+
+def generateTransform(inpt, p, sigma):
+    G = sigma*np.random.randn(inpt.shape[1], p)
+    b = np.random.uniform(0, 2*np.pi, (p, 1))
+
+    return G, b
+
+
+def transform(inpt, G, b):
+    out = np.transpose(np.cos(np.dot(np.transpose(G), np.transpose(inpt))+b))
+    return out
+
+
+def split(x, y, ylist, frac):
+    index = random.sample(range(x.shape[0]), int(x.shape[0]*frac))
+    xmajor = x[index]
+    xminor = np.delete(x, index, 0)
+    ymajor = y[index]
+    yminor = np.delete(y, index, 0)
+    listmajor = ylist[index]
+    listminor = np.delete(ylist, index, 0)
+
+    return xmajor, xminor, ymajor, yminor, listmajor, listminor
+
+
+load_dataset()
+
+y_train=one_hot(labels_train)
+w = train(X_train, y_train, 10**-4)
+
+print("No transformation")
+print("Training Accuracy: "+str(sum(predict(w, X_train) == labels_train)/len(X_train)*100)+"%")
+print("Testing Accuracy: "+str(sum(predict(w, X_test) == labels_test)/len(X_test)*100)+"%")
+
+pmax=1*10**3
+trainErr = np.zeros((pmax, 1))
+valErr = np.zeros((pmax, 1))
+for p in range(1, pmax):
+    start=time.time()
+    G, b= generateTransform(X_train, p, np.sqrt(0.1))
+    transX = transform(X_train, G, b)
+    trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
+    w= train(trainX, trainY, 10**-4)
+    trainErr[p] = sum(predict(w, trainX) == trainList) / len(trainX)*100
+    valErr[p] = sum(predict(w, valX) == valList) / len(valX)*100
+    end=time.time()
+    print(str(round(p/pmax*100, 3))+"% Done")
+    print(str(round((end-start)*(pmax-p),2))+" s left")
+
+
+pOpt = np.argmax(valErr)
+G, b = generateTransform(X_train, p, 0.01)
+transX = transform(X_train, G, b)
+trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
+w = train(trainX, trainY, 10**-4)
+
+print("With transformation")
+print("Training Accuracy: "+str(sum(predict(w, trainX) == trainList)/len(trainX)*100)+"%")
+print("Testing Accuracy: "+str(sum(predict(w, transform(X_test, G, b)) == labels_test)/len(X_test)*100)+"%")
+
+plt.plot(trainErr)
+plt.plot(valErr)
+plt.grid()
+plt.ylabel("Accuracy (%)")
+plt.xlabel("p")
+plt.legend(("Training Accuracy", "Validation Accuracy"))
+plt.show()
+\end{lstlisting}
 
 
 \end{enumerate}

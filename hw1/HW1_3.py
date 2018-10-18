@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mnist import MNIST
 import random
+import time
 
 from numpy.core.multiarray import ndarray
 
@@ -25,29 +26,30 @@ def one_hot(inpt):
     for i in range(len(inpt)):
         vec = np.zeros(10)
         for j in range(10):
-            vec[j] = (int(int(inpt[i]) == j))
+            vec[j] = int(int(inpt[i]) == j)
             output[i] = vec
     return output
 
 
 def train(X, y, lamb):
-    w = np.linalg.solve(np.dot(np.transpose(X), X)+lamb*np.identity(X.shape[1]), np.dot(np.transpose(X), y))
+    w = np.linalg.solve(np.dot(X.T, X)+lamb*np.identity(X.shape[1]), np.dot(X.T, y))
     return w
 
 
 def predict(w, x):
-    y=np.dot(np.transpose(w), np.transpose(x))
+    y=np.dot(w.T, x.T)
     return np.argmax(y, axis=0)
+
 
 def generateTransform(inpt, p, sigma):
     G = sigma*np.random.randn(inpt.shape[1], p)
-    b = np.random.uniform(0, 2*np.pi, (p, 1))
+    b = np.random.uniform(0, 2*np.pi, (1, p))
 
     return G, b
 
 
 def transform(inpt, G, b):
-    out = np.transpose(np.cos(np.dot(np.transpose(G), np.transpose(inpt))+b))
+    out = np.cos(np.dot(inpt,G)+b)
     return out
 
 
@@ -72,16 +74,20 @@ print("No transformation")
 print("Training Accuracy: "+str(sum(predict(w, X_train) == labels_train)/len(X_train)*100)+"%")
 print("Testing Accuracy: "+str(sum(predict(w, X_test) == labels_test)/len(X_test)*100)+"%")
 
-pmax=3*10**3
+pmax=1*10**3
 trainErr = np.zeros((pmax, 1))
 valErr = np.zeros((pmax, 1))
 for p in range(1, pmax):
-    G, b= generateTransform(X_train, p, 0.01)
+    start=time.time()
+    G, b= generateTransform(X_train, p, np.sqrt(0.1))
     transX = transform(X_train, G, b)
     trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
     w= train(trainX, trainY, 10**-4)
-    trainErr[p] = sum(predict(w, trainX) == trainList) / len(trainX)*100
+    trainErr[p] = sum( predict(w, trainX) == trainList) / len(trainX)*100
     valErr[p] = sum(predict(w, valX) == valList) / len(valX)*100
+    end=time.time()
+    print(str(round(p/pmax*100, 3))+"% Done")
+    print(str(round((end-start)*(pmax-p),2))+" s left")
 
 
 pOpt = np.argmax(valErr)
@@ -100,4 +106,5 @@ plt.grid()
 plt.ylabel("Accuracy (%)")
 plt.xlabel("p")
 plt.legend(("Training Accuracy", "Validation Accuracy"))
-plt.show()
+plt.tight_layout()
+plt.savefig("CrossVal.pdf")
