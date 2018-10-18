@@ -74,7 +74,7 @@ print("No transformation")
 print("Training Accuracy: "+str(sum(predict(w, X_train) == labels_train)/len(X_train)*100)+"%")
 print("Testing Accuracy: "+str(sum(predict(w, X_test) == labels_test)/len(X_test)*100)+"%")
 
-pmax=1*10**3
+pmax=1*10**4
 trainErr = np.zeros((pmax, 1))
 valErr = np.zeros((pmax, 1))
 for p in range(1, pmax):
