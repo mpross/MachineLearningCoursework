@@ -64,47 +64,47 @@ def split(x, y, ylist, frac):
 
     return xmajor, xminor, ymajor, yminor, listmajor, listminor
 
+if __name__="__main__":
+	load_dataset()
+	
+	y_train=one_hot(labels_train)
+	w = train(X_train, y_train, 10**-4)
 
-load_dataset()
+	print("No transformation")
+	print("Training Accuracy: "+str(sum(predict(w, X_train) == labels_train)/len(X_train)*100)+"%")
+	print("Testing Accuracy: "+str(sum(predict(w, X_test) == labels_test)/len(X_test)*100)+"%")
 
-y_train=one_hot(labels_train)
-w = train(X_train, y_train, 10**-4)
-
-print("No transformation")
-print("Training Accuracy: "+str(sum(predict(w, X_train) == labels_train)/len(X_train)*100)+"%")
-print("Testing Accuracy: "+str(sum(predict(w, X_test) == labels_test)/len(X_test)*100)+"%")
-
-pmax=1*10**3
-trainErr = np.zeros((pmax, 1))
-valErr = np.zeros((pmax, 1))
-for p in range(1, pmax):
-    start=time.time()
-    G, b= generateTransform(X_train, p, np.sqrt(0.1))
-    transX = transform(X_train, G, b)
-    trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
-    w= train(trainX, trainY, 10**-4)
-    trainErr[p] = sum( predict(w, trainX) == trainList) / len(trainX)*100
-    valErr[p] = sum(predict(w, valX) == valList) / len(valX)*100
-    end=time.time()
-    print(str(round(p/pmax*100, 3))+"% Done")
-    print(str(round((end-start)*(pmax-p),2))+" s left")
-
-
-pOpt = np.argmax(valErr)
-G, b = generateTransform(X_train, p, 0.01)
-transX = transform(X_train, G, b)
-trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
-w = train(trainX, trainY, 10**-4)
-
-print("With transformation")
-print("Training Accuracy: "+str(sum(predict(w, trainX) == trainList)/len(trainX)*100)+"%")
-print("Testing Accuracy: "+str(sum(predict(w, transform(X_test, G, b)) == labels_test)/len(X_test)*100)+"%")
-
-plt.plot(trainErr)
-plt.plot(valErr)
-plt.grid()
-plt.ylabel("Accuracy (%)")
-plt.xlabel("p")
-plt.legend(("Training Accuracy", "Validation Accuracy"))
-plt.tight_layout()
-plt.savefig("CrossVal.pdf")
+	pmax=1*10**4
+	trainErr = np.zeros((pmax, 1))
+	valErr = np.zeros((pmax, 1))
+	for p in range(1, pmax):
+	    start=time.time()
+	    G, b= generateTransform(X_train, p, np.sqrt(0.1))
+	    transX = transform(X_train, G, b)
+	    trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
+	    w= train(trainX, trainY, 10**-4)
+	    trainErr[p] = sum( predict(w, trainX) == trainList) / len(trainX)*100
+	    valErr[p] = sum(predict(w, valX) == valList) / len(valX)*100
+	    end=time.time()
+	    print(str(round(p/pmax*100, 3))+"% Done")
+	    print(str(round((end-start)*(pmax-p),2))+" s left")
+	
+	
+	pOpt = np.argmax(valErr)
+	G, b = generateTransform(X_train, p, 0.01)
+	transX = transform(X_train, G, b)
+	trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
+	w = train(trainX, trainY, 10**-4)
+	
+	print("With transformation")
+	print("Training Accuracy: "+str(sum(predict(w, trainX) == trainList)/len(trainX)*100)+"%")
+	print("Testing Accuracy: "+str(sum(predict(w, transform(X_test, G, b)) == labels_test)/len(X_test)*100)+"%")
+	
+	plt.plot(trainErr)
+	plt.plot(valErr)
+	plt.grid()
+	plt.ylabel("Accuracy (%)")
+	plt.xlabel("p")
+	plt.legend(("Training Accuracy", "Validation Accuracy"))
+	plt.tight_layout()
+	plt.savefig("CrossVal.pdf")
