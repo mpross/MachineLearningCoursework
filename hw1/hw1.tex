@@ -81,7 +81,64 @@ For each $i=1,2,3$ on a separate plot:
   Compute the eigenvectors of $\widehat{\Sigma}_i$. Plot the eigenvectors as line segments originating from $\widehat{\mu}_i$ and have magnitude equal to the square root of their corresponding eigenvalues.
   \item If $(u_{i,1},\lambda_{i,1})$ and $(u_{i,2},\lambda_{i,2})$ are the eigenvector-eigenvalue pairs of the sample covariance matrix with $\lambda_{i,1} \geq \lambda_{i,2}$ and $||u_{i,1}||_2 = ||u_{i,2}||_2 = 1$, for $j=1,\dots,n$ let $\widetilde{X}_{i,j} = \begin{bmatrix} \frac{1}{\sqrt{\lambda_{i,1}}} u_{i,1}^T (X_{i,j} - \widehat{\mu}_i) \\ \frac{1}{\sqrt{\lambda_{i,2}}} u_{i,2}^T (X_{i,j} - \widehat{\mu}_i)  \end{bmatrix}$. Plot these new points as a scatter plot with each point as a circle marker. 
 \end{enumerate}
-For each plot, make sure the limits of the plot are square around the origin (e.g., $[-c,c] \times [-c,c]$ for some $c > 0$).
+For each plot, make sure the limits of the plot are square around the origin (e.g., $[-c,c] \times [-c,c]$ for some $c > 0$).\\
+
+\textbf{Answer:}\\
+
+ \includegraphics[width=4in]{GaussianDraws0.pdf}\\
+  \includegraphics[width=4in]{GaussianDraws1.pdf}\\
+ \includegraphics[width=4in]{GaussianDraws2.pdf}\\
+ 
+ \textbf{Code:}
+ \begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.linalg
+
+mu=np.zeros([1,2,3])
+mu[:,:,0]=np.array([1,2])
+mu[:,:,1]=np.array([-1,1])
+mu[:,:,2]=np.array([2,-2])
+
+sigma=np.zeros([2,2,3])
+sigma[:,:,0]=np.array([[1,0],[0,2]])
+sigma[:,:,1]=np.array([[2,-1.8],[-1.8,2]])
+sigma[:,:,2]=np.array([[3,1],[1,2]])
+
+
+
+for k in range(3):
+    draw = np.random.randn(2,100)
+    w, v = np.linalg.eig(sigma[:,:,k])
+    sigHalf=scipy.linalg.sqrtm(sigma[:,:,k])
+    x = np.transpose(np.dot(sigHalf,draw))+mu[:,:,k]
+
+    mean = np.sum(x,axis=0)/len(x)
+    sm = np.zeros([2,2])
+    for i in range(len(x)):
+        sm += np.outer(x[i, :]-mean,x[i, :]-mean)
+    covar = sm/(len(x)-1)
+
+    w, v = np.linalg.eig(covar)
+    xSquiggle=np.zeros(x.shape)
+
+    for i in range(len(x)):
+        xSquiggle[i,:] = 1/np.sqrt(w)*np.dot(np.transpose(v),x[i,:]-mean)
+
+    plt.figure(k)
+    plt.scatter(x[:, 0], x[:, 1], 50, 'b', '^',label='Original Draw')
+    plt.scatter(xSquiggle[:, 0], xSquiggle[:, 1], 50, 'g', 'o', label='Transformed')
+    plt.plot((mean[0], np.sqrt(w[1]) * v[0, 0] + mean[0]), (mean[1], np.sqrt(w[1]) * v[0, 1] + mean[1]),'r', linewidth=2,label='Eigen Vectors')
+    plt.plot((mean[0], np.sqrt(w[0]) * v[1, 0] + mean[0]), (mean[1], np.sqrt(w[0]) * v[1, 1] + mean[1]),'r', linewidth=2)
+    plt.axis((-6,6,-6,6))
+    plt.xlabel("x1")
+    plt.ylabel("x2")
+    plt.legend()
+    plt.savefig("GaussianDraws"+str(k)+".pdf")
+
+plt.show()
+
+ \end{lstlisting}
 
 \section{MLE and Bias Variance Tradeoff}
 Recall that for any vector $u \in \R^n$ we have $\|u\|_2^2 = u^T u = \sum_{i=1}^n u_i^2$ and $||u||_1 = \sum_{i=1}^n |u_i|$. 
@@ -109,6 +166,10 @@ If $R_{tr}(w) = \frac{1}{n} \sum_{i=1}^n (y_i - w^T x_i)^2$ and $R_{te}(w) = \fr
 \E[ R_{tr}(\widehat{w}) ] \leq \E[ R_{te}(\widehat{w}) ]
 \end{align*}
 where the expectations are over all that is random in each expression. Do not assume any model for $y_i$ given $x_i$ (e.g., linear plus Gaussian noise). [This is exercise 2.9 from HTF, originally from Andrew Ng.]\\
+
+\textbf{Answer:}\\
+
+Since the $R$ is the same if we train on either data set, the min$(R)$ are the same. However, since $\widehat{w}$ is trained on the training data set it is not necessarily the $w$ that minimizes the $R_{te}$ but since $R$ is concave and their minimums are the same, $\E[ R_{tr}(\widehat{w}) ] \leq \E[ R_{te}(\widehat{w}) ]$ \\
 
 4.  \grade{8} Let random vector $X \in \R^d$ and random variable $Y \in \R$ have a joint distribution $P_{XY}(X,Y)$. 
 Assume $\E[X]=0$ and define $\Sigma = \text{Cov}(X)=\E[(X-\E[X])(X-\E[X])^T]$ with eigenvalues $\alpha_1 \geq \alpha_2 \geq \dots \geq \alpha_d$ and orthonormal eigenvectors $v_1,\dots,v_d$ such that $\Sigma = \sum_{i=1}^d \alpha_i v_i v_i^T$.
@@ -259,10 +320,22 @@ Justify all answers.
     \E_{XY,\mc{D}}[ (Y-\widehat{f}_{\mc{D}}(X))^2] = \sigma^2 + \frac{\lambda^2 \alpha_1 \|w\|_2^2}{(\alpha_1 n+\lambda)^2} + \frac{\sigma^2 n \alpha_1^2}{(\alpha_1 n + \lambda)^2} + \frac{\sigma^2 n \alpha_2^2 (d-1)}{(\alpha_2 n + \lambda)^2}
     \end{align*}
     It can be shown that $\lambda^\star = \frac{\sigma^2 + \sigma^2(d-1)\alpha_1/\alpha_2}{\|w\|_2^2}$ approximately minimizes this expression. 
-    In a sentence each describe if this makes intuitive sense, comparing to the solution of the last problem.
+    In a sentence each describe if this makes intuitive sense, comparing to the solution of the last problem.\\
     
+    \textbf{Answer:}\\
     
-    \item As $\lambda$ increases, how does the bias and variance terms behave?
+    $\E_{Y|X,\mc{D}}\big[(Y-\widehat{f}_{\mc{D}}(X))^2 |X=x \big] =\sigma^2 +\sum_{i=1}^d \alpha_i \lambda^2 (w^T v_i)^2 /(n\alpha_i + \lambda) ^2 +\sum_{i=1}^d n \alpha_i^2 \sigma^2 /(n\alpha_i + \lambda)^2$\\
+    $=\sigma^2 +\alpha_1 \lambda^2 (w^T v_1)^2 /(n\alpha_1 + \lambda) ^2 + \alpha_1^2 \sigma^2 /(n\alpha_1 + \lambda)^2 +\sum_{i=2}^d \alpha_i \lambda^2 (w^T v_i)^2 /(n\alpha_i + \lambda) ^2 +\sum_{i=2}^d n \alpha_i^2 \sigma^2 /(n\alpha_i + \lambda)^2$\\
+    
+    Since $w=\|w\|_2 v_1$ then $w^T v_i=0$ for $i\neq j$\\
+    $=\sigma^2 +\alpha_1 \lambda^2 (w^T v_1)^2 /(n\alpha_1 + \lambda) ^2 + \alpha_1^2 \sigma^2 /(n\alpha_1 + \lambda)^2 +\sum_{i=2}^d n \alpha_i^2 \sigma^2 /(n\alpha_i + \lambda)^2$\\
+    $=\sigma^2 +\alpha_1 \lambda^2 \|w\|_2^2 /(n\alpha_1 + \lambda) ^2 + \alpha_1^2 \sigma^2 /(n\alpha_1 + \lambda)^2 +d n \alpha_i^2 \sigma^2 /(n\alpha_i + \lambda)^2$\\
+    
+    \item As $\lambda$ increases, how does the bias and variance terms behave?\\
+    
+     \textbf{Answer:}\\
+     
+     As $\lambda$ increase the bias-squared approaches a constant: $\sum (w_i^T v_i)^2 \alpha_i$ while the variance decreases like $1/\lambda^2$ which match the intuition that more less complex (larger $\lambda$) models will have higher bias since it pulls the solution towards zero.
      
 \end{enumerate}
 
@@ -361,6 +434,8 @@ We will use the above equation to construct a confidence interval around our tru
 Let $\widehat{p}$ be the value of $p$ that approximately minimizes the validation error on the plot you just made and use $\widehat{W}^{\widehat{p}}$ to compute the classification test accuracy, which we will denote as $E_{test}$. 
 Use Hoeffding's inequality, above, to compute a confidence interval that contains $\E[E_{test}]$ (i.e., the \emph{true} error) with probability at least $0.95$ (i.e., $\delta=0.05$).
 Report $E_{test}$ and the confidence interval. 
+
+\textbf{Code:}
 \begin{lstlisting}[language=Python]
 import numpy as np
 import matplotlib.pyplot as plt

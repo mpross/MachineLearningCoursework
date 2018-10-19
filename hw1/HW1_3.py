@@ -74,9 +74,10 @@ print("No transformation")
 print("Training Accuracy: "+str(sum(predict(w, X_train) == labels_train)/len(X_train)*100)+"%")
 print("Testing Accuracy: "+str(sum(predict(w, X_test) == labels_test)/len(X_test)*100)+"%")
 
-pmax=1*10**4
+pmax=1*10**3
 trainErr = np.zeros((pmax, 1))
 valErr = np.zeros((pmax, 1))
+
 for p in range(1, pmax):
     start=time.time()
     G, b= generateTransform(X_train, p, np.sqrt(0.1))
@@ -106,5 +107,4 @@ plt.grid()
 plt.ylabel("Accuracy (%)")
 plt.xlabel("p")
 plt.legend(("Training Accuracy", "Validation Accuracy"))
-plt.tight_layout()
-plt.savefig("CrossVal.pdf")
+plt.show()

@@ -33,10 +33,14 @@ for k in range(3):
         xSquiggle[i,:] = 1/np.sqrt(w)*np.dot(np.transpose(v),x[i,:]-mean)
 
     plt.figure(k)
-    plt.scatter(x[:,0],x[:,1],50,'b','^')
-    plt.plot((mean[0], np.sqrt(w[1]) * v[0, 0] + mean[0]), (mean[1], np.sqrt(w[1]) * v[0, 1] + mean[1]),'r', linewidth=2)
+    plt.scatter(x[:, 0], x[:, 1], 50, 'b', '^',label='Original Draw')
+    plt.scatter(xSquiggle[:, 0], xSquiggle[:, 1], 50, 'g', 'o', label='Transformed')
+    plt.plot((mean[0], np.sqrt(w[1]) * v[0, 0] + mean[0]), (mean[1], np.sqrt(w[1]) * v[0, 1] + mean[1]),'r', linewidth=2,label='Eigen Vectors')
     plt.plot((mean[0], np.sqrt(w[0]) * v[1, 0] + mean[0]), (mean[1], np.sqrt(w[0]) * v[1, 1] + mean[1]),'r', linewidth=2)
-    plt.scatter(xSquiggle[:,0],xSquiggle[:,1],50,'g','o')
     plt.axis((-6,6,-6,6))
+    plt.xlabel("x1")
+    plt.ylabel("x2")
+    plt.legend()
+    plt.savefig("GaussianDraws"+str(k)+".pdf")
 
 plt.show()
