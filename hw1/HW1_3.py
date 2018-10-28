@@ -64,8 +64,7 @@ def split(x, y, ylist, frac):
 
     return xmajor, xminor, ymajor, yminor, listmajor, listminor
 
-<<<<<<< HEAD
-if __name__="__main__":
+if __name__=="__main__":
 	load_dataset()
 	
 	y_train=one_hot(labels_train)
@@ -109,7 +108,6 @@ if __name__="__main__":
 	plt.legend(("Training Accuracy", "Validation Accuracy"))
 	plt.tight_layout()
 	plt.savefig("CrossVal.pdf")
-=======
 
 load_dataset()
 
@@ -154,4 +152,3 @@ plt.ylabel("Accuracy (%)")
 plt.xlabel("p")
 plt.legend(("Training Accuracy", "Validation Accuracy"))
 plt.show()
->>>>>>> 65419ec4635445ffad223cf85c4b3863ef263e3a
