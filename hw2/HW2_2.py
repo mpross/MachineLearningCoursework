@@ -16,29 +16,49 @@ def generateSynth(n, d, k, sigma):
     return x, y
 
 def coordDescent(x, y, lamb, delta, w0):
-    d = x[0].size
+    d = x.T[0].size
+    n=x[0].size
 
     a = np.zeros(d)
     c = np.zeros(d)
-    w = np.zeros(d)
-    w[0] = w0
+    diff = np.zeros(d)
+    w = w0*np.ones(d)
 
-    i = 0
-    while np.abs(w[i-1]-w[i]) > delta:
-
-        b = sum(y-np.dot(w[i], x))/y.size
+    while True:
+        b = np.sum(y-np.dot(w, x))/y.size
         for k in range(1, d):
-            a[k] = 2*np.dot(x, x)
-            c[k] = 2*np.dot(x, y - (b + np.dot(np.concatenate((w[0:k-1], w[k:])), np.concatenate((x[0:k-1], x[k:])))))
+            a[k] = 2 * np.dot(x[k], x[k])
+            c[k] = 2 * np.dot(x[k], (y - (b + np.dot(w, x)- np.dot(w[k], x[k]))))
             if c[k] < -lamb:
-               w[k] = (c[k]+lamb)/a[k]
+                diff[k] = w[k]-(c[k]+lamb)/a[k]
+                w[k] = (c[k]+lamb)/a[k]
             elif c[k] > lamb:
+                diff[k] = w[k] - (c[k] - lamb) / a[k]
                 w[k] = (c[k] - lamb) / a[k]
             else:
+                diff[k] = 0
                 w[k] = 0
+
+
+        print(np.dot(y-np.dot(x.T, w)-b, y-np.dot(x.T, w)-b))
+        print(np.max(np.abs(diff)))
+
+        if np.max(np.abs(diff)) < delta:
+            break
+
+    return w
+
+
+def regularization(x, y, lamb, delta, w0):
+    lambdaMax=np.max(2*np.abs(np.dot(x, (y-(np.sum(y)/y.size)))))
+
+    w = coordDescent(x, y, lambdaMax, 10**-15, 10)
 
 
 if __name__ == "__main__":
     x, y = generateSynth(n, d, k, sigma)
+    lambdaMax = np.max(2*np.abs(np.dot(x, (y-(np.sum(y)/y.size)))))
+    print(lambdaMax)
 
-    print(y.size)
+    w = coordDescent(x, y, lambdaMax, 10**-15, 10)
+    print(np.nonzero(w)[0].size)
