@@ -22,7 +22,7 @@ def coordDescent(x, y, lamb, delta, w0):
     a = np.zeros(d)
     c = np.zeros(d)
     diff = np.zeros(d)
-    w = w0*np.ones(d)
+    w = w0
 
     while True:
         b = np.sum(y-np.dot(w, x))/y.size
@@ -49,16 +49,34 @@ def coordDescent(x, y, lamb, delta, w0):
     return w
 
 
-def regularization(x, y, lamb, delta, w0):
-    lambdaMax=np.max(2*np.abs(np.dot(x, (y-(np.sum(y)/y.size)))))
+def regularization(x, y, delta, w0):
 
-    w = coordDescent(x, y, lambdaMax, 10**-15, 10)
+    lamb = np.max(2*np.abs(np.dot(x, (y-(np.sum(y)/y.size)))))
+    w = coordDescent(x, y, lamb, delta, w0)
+    non0 = np.nonzero(w)[0].size
+
+    non0Vec = np.array((0, non0))
+    lambVec = np.array((0, lamb))
+
+    while np.nonzero(w)[0].size <= 999:
+
+        lamb = lambVec[-1]/1.5
+        w = coordDescent(x, y, lamb, delta, w)
+        non0 = np.nonzero(w)[0].size
+
+        non0Vec = np.append(non0Vec, non0)
+        lambVec = np.append(lambVec, lamb)
+
+    plt.plot(lambVec[1:], non0Vec[1:])
+    plt.xscale('log')
+    plt.show()
+
+    return w
+
+
 
 
 if __name__ == "__main__":
     x, y = generateSynth(n, d, k, sigma)
-    lambdaMax = np.max(2*np.abs(np.dot(x, (y-(np.sum(y)/y.size)))))
-    print(lambdaMax)
 
-    w = coordDescent(x, y, lambdaMax, 10**-15, 10)
-    print(np.nonzero(w)[0].size)
+    w = regularization(x, y, 0.1, 10*np.ones(d))
