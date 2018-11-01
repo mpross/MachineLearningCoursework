@@ -13,7 +13,7 @@ def generateSynth(n, d, k, sigma):
     j = np.array(range(1, k+1))
     w = np.concatenate((j/k, np.zeros(d-k)))
     y = np.dot(w, x)+np.random.randn(n)
-    return x, y
+    return x, y, w
 
 def coordDescent(x, y, lamb, delta, w0):
     d = x.T[0].size
@@ -23,12 +23,15 @@ def coordDescent(x, y, lamb, delta, w0):
     c = np.zeros(d)
     diff = np.zeros(d)
     w = w0
+    wLast=np.zeros(d)
 
     while True:
         b = np.sum(y-np.dot(w, x))/y.size
         for k in range(1, d):
             a[k] = 2 * np.dot(x[k], x[k])
-            c[k] = 2 * np.dot(x[k], (y - (b + np.dot(w, x)- np.dot(w[k], x[k]))))
+            wCut = np.copy(w)
+            wCut[k] = 0
+            c[k] = 2 * np.dot(x[k], (y - (b + np.dot(wCut, x))))
             if c[k] < -lamb:
                 diff[k] = w[k]-(c[k]+lamb)/a[k]
                 w[k] = (c[k]+lamb)/a[k]
@@ -49,27 +52,43 @@ def coordDescent(x, y, lamb, delta, w0):
     return w
 
 
-def regularization(x, y, delta, w0):
+def regularization(x, y, delta, w0, wTrue):
 
     lamb = np.max(2*np.abs(np.dot(x, (y-(np.sum(y)/y.size)))))
     w = coordDescent(x, y, lamb, delta, w0)
-    non0 = np.nonzero(w)[0].size
+    non0 = np.sum(w != 0)
+
+    FDR = np.sum(np.logical_and(wTrue == 0, w != 0)) / np.sum(w != 0)
+    TPR = np.sum(np.logical_and(wTrue != 0, w != 0)) / np.sum(wTrue != 0)
 
     non0Vec = np.array((0, non0))
     lambVec = np.array((0, lamb))
+    FDRVec = np.array((0, FDR))
+    TPRVec = np.array((0, TPR))
+    while np.sum(w != 0) <= 0.9 * x.T[0].size:
 
-    while np.nonzero(w)[0].size <= 999:
-
-        lamb = lambVec[-1]/1.5
+        lamb = lambVec[-1]*0.9
         w = coordDescent(x, y, lamb, delta, w)
-        non0 = np.nonzero(w)[0].size
+        non0 = np.sum(w != 0)
+
+        FDR = np.sum(np.logical_and(wTrue == 0, w != 0)) / np.sum(w != 0)
+        TPR = np.sum(np.logical_and(wTrue != 0, w != 0)) / np.sum(wTrue != 0)
 
         non0Vec = np.append(non0Vec, non0)
         lambVec = np.append(lambVec, lamb)
+        FDRVec = np.append(FDRVec, FDR)
+        TPRVec = np.append(TPRVec, TPR)
 
+    plt.figure(1)
     plt.plot(lambVec[1:], non0Vec[1:])
     plt.xscale('log')
-    plt.show()
+    plt.draw()
+
+    plt.figure(2)
+    plt.plot(lambVec[1:], FDRVec[1:])
+    plt.plot(lambVec[1:], TPRVec[1:])
+    plt.xscale('log')
+    plt.draw()
 
     return w
 
@@ -77,6 +96,8 @@ def regularization(x, y, delta, w0):
 
 
 if __name__ == "__main__":
-    x, y = generateSynth(n, d, k, sigma)
+    x, y, wTrue = generateSynth(n, d, k, sigma)
 
-    w = regularization(x, y, 0.1, 10*np.ones(d))
+    w = regularization(x, y, 0.01, np.zeros(d), wTrue)
+
+    plt.show()
