@@ -428,6 +428,167 @@ Each sample is a $(x_i,y_i)$ pair. As a pre-processing step, take the square roo
   List the names of these features and their weights, and comment on if the weights generally make sense intuitively. As you use a larger $\lambda$ so that fewer features are selected, they may make more sense.
 \end{enumerate}  
 
+\textbf{Answer:}
+
+\includegraphics[width=4in]{ErrorvsLambda.pdf}\\
+\includegraphics[width=4in]{NonzerovsLambdaYelp.pdf}\\
+
+Minimum lambda: 1.4817697853688347\\
+Validation Error: 4.821187808528988\\
+Training Error: 6.455821756999174\\
+Testing Error: 7.469889580399166\\
+
+Feature: sqrt(UserCoolVotes*BusinessNumStars) Weight: 11.163491544734567\\
+Feature: sqrt(ReviewNumCharacters*UserFunnyVotes) Weight: 11.023286731981274\\
+Feature: sqrt(UserFunnyVotes*BusinessNumStars) Weight: 6.649204586037747\\
+Feature: ReviewNumCharacters*BusinessLongitude Weight: -5.208188386867837\\
+Feature: log(ReviewNumCharacters*UserUsefulVotes) Weight: 5.15639055251354\\
+Feature: log(ReviewNumLineBreaks*UserCoolVotes) Weight: 4.308137170365565\\
+Feature: sq(ReviewDate*UserNumReviews) Weight: -4.054450355155656\\
+Feature: sq(UserNumReviews*BusinessIsOpen) Weight: -3.8906977942521586\\
+Feature: log(UserNumReviews) Weight: -3.5961259968436465\\
+Feature: sq(ReviewNumWords*UserNumReviews) Weight: -3.149112306059122\\
+Feature: UserUsefulVotes*InScottsdale Weight: 2.905407637747753\\
+
+These make intuitive sense because most are a combination of positive rankings of the review, of the user, and of the business. The only odd one is the last one which has the InScottsdale feature but the UserUsefulVotes could be carrying most the weight there.
+
+\textbf{Code}:
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+import time
+
+
+def loadData():
+    # Load a csv of floats:
+    X = np.genfromtxt("upvote_data.csv", delimiter=",")
+    # Load a text file of integers:
+    y = np.loadtxt("upvote_labels.txt", dtype=np.int)
+    # Load a text file of strings:
+    featureNames = open("upvote_features.txt").read().splitlines()
+    return X, y, featureNames
+
+
+def splitData(x, y, index1, index2):
+    trainX = x[:index1]
+    valX = x[index1:index2]
+    testX = x[index2:]
+
+    trainY = y[:index1]
+    valY = y[index1:index2]
+    testY = y[index2:]
+
+    return trainX, trainY, valX, valY, testX, testY
+
+
+def coordDescent(x, y, lamb, delta, w0):
+    d = x.T[0].size
+
+    a = np.zeros(d)
+    c = np.zeros(d)
+    diff = np.zeros(d)
+    w = w0
+
+    while True:
+        b = np.sum(y-np.dot(w, x))/y.size
+        for k in range(1, d):
+            a[k] = 2 * np.dot(x[k], x[k])
+            wCut = np.copy(w)
+            wCut[k] = 0
+            c[k] = 2 * np.dot(x[k], (y - (b + np.dot(wCut, x))))
+            if c[k] < -lamb:
+                diff[k] = w[k]-(c[k]+lamb)/a[k]
+                w[k] = (c[k]+lamb)/a[k]
+            elif c[k] > lamb:
+                diff[k] = w[k] - (c[k] - lamb) / a[k]
+                w[k] = (c[k] - lamb) / a[k]
+            else:
+                diff[k] = 0
+                w[k] = 0
+
+        if np.max(np.abs(diff)) < delta:
+            break
+
+    return w
+
+
+def regularization(x, y, delta, w0, xVal, yVal):
+
+    lamb = np.max(2*np.abs(np.dot(x, (y-(np.sum(y)/y.size)))))
+    w = coordDescent(x, y, lamb, delta, w0)
+    valErr = np.dot(np.square(yVal) - np.square(np.dot(w, xVal)), np.square(yVal) - np.square(np.dot(w, xVal)))
+    trainErr = np.dot(np.square(y) - np.square(np.dot(w, x)), np.square(y) - np.square(np.dot(w, x)))
+    non0 = np.sum(w != 0)
+
+    lambVec = np.array((0, lamb))
+    valErrVec = np.array((0, valErr))
+    trainErrVec = np.array((0, trainErr))
+    non0Vec = np.array((0, non0))
+
+    while np.sum(w != 0) <= 0.75 * x.T[0].size:
+
+        lamb = lambVec[-1]*0.75
+        w = coordDescent(x, y, lamb, delta, w)
+        valErr = np.dot(np.square(yVal) - np.square(np.dot(w, xVal)), np.square(yVal) - np.square(np.dot(w, xVal)))
+        trainErr = np.dot(np.square(y) - np.square(np.dot(w, x)), np.square(y) - np.square(np.dot(w, x)))
+        non0 = np.sum(w != 0)
+
+        lambVec = np.append(lambVec, lamb)
+        valErrVec = np.append(valErrVec, valErr)
+        trainErrVec = np.append(trainErrVec, trainErr)
+        non0Vec = np.append(non0Vec, non0)
+
+        print(str(round(np.sum(w != 0)/(0.75 * x.T[0].size)*100, 1))+"% Done")
+
+    minLamb=lambVec[np.argmin(valErrVec[1:])]
+
+    plt.figure(1)
+    plt.plot(lambVec[1:], valErrVec[1:]/xVal[1].size, label='Validation Error')
+    plt.plot(lambVec[1:], trainErrVec[1:]/x[1].size, label='Train Error')
+    plt.xscale('log')
+    plt.xlabel('lambda')
+    plt.ylabel('Error')
+    plt.legend()
+    plt.draw()
+    plt.savefig('ErrorvsLambda.pdf', bbox_inches='tight')
+    plt.gca().invert_xaxis()
+
+    plt.figure(2)
+    plt.plot(lambVec[1:], non0Vec[1:])
+    plt.xscale('log')
+    plt.xlabel('lambda')
+    plt.ylabel('Non-Zero Elements')
+    plt.draw()
+    plt.savefig('NonzerovsLambdaYelp.pdf', bbox_inches='tight')
+
+    return minLamb
+
+
+if __name__ == "__main__":
+    start=time.time()
+    x, y, featureNames = loadData()
+    trainX, trainY, valX, valY, testX, testY = splitData(x, np.sqrt(y), 4000, 5000)
+    minLamb = regularization(trainX.T, trainY, 0.5, np.zeros(trainX[0].size), valX.T, valY)
+
+    print("Minimum lambda: " + str(minLamb))
+
+    w = coordDescent(trainX.T, trainY, minLamb, 0.5, np.zeros(trainX[0].size))
+
+    print("Validation Error: " + str(
+        np.dot(np.square(valY) - np.square(np.dot(w, valX.T)), np.square(valY) - np.square(np.dot(w, valX.T)))/valY.size))
+    print("Training Error: " + str(
+        np.dot(np.square(trainY) - np.square(np.dot(w, trainX.T)), np.square(trainY) - np.square(np.dot(w, trainX.T)))/trainY.size))
+    print("Testing Error: " + str(
+        np.dot(np.square(testY) - np.square(np.dot(w, testX.T)), np.square(testY) - np.square(np.dot(w, testX.T)))/testY.size))
+
+    print("Execution Time: "+str(time.time()-start))
+
+    for i in np.flip(np.argsort(abs(w)))[0:11]:
+        print("Feature: "+str(featureNames[i]) + " Weight: "+str(w[i]))
+    plt.show()
+\end{lstlisting}
+
 \subsection{Programming: Binary Logistic Regression}
 
 5. \grade{5} Let us again consider the MNIST dataset, but now just binary classification, specifically, recognizing if a digit is a $2$ or $7$.
@@ -453,7 +614,7 @@ Let $\mu_i(w,b) = \frac{1}{1+ \exp(-y_i (b + x_i^T w))}$.
   
   $\nabla_w \mu_i= \frac{y_i x_i\exp(-y_i (b + x_i^T w))}{(1+ \exp(-y_i (b + x_i^T w)))^2}$\\
  $ = y_i x_i (\frac{1}{\mu_i}-1) \mu_i^2$\\
- $ = y_i x_i (\mu_i- \mu_i^2)$
+ $ = y_i x_i (\mu_i- \mu_i^2)$\\
  
   $\nabla_b \mu_i= y_i  (\mu_i- \mu_i^2)$\\
   

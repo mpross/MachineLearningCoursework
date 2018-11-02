@@ -95,8 +95,9 @@ def regularization(x, y, delta, w0, xVal, yVal):
     plt.ylabel('Error')
     plt.legend()
     plt.draw()
-    plt.savefig('ErrorvsLambda.pdf', bbox_inches='tight')
     plt.gca().invert_xaxis()
+    plt.savefig('ErrorvsLambda.pdf', bbox_inches='tight')
+
 
     plt.figure(2)
     plt.plot(lambVec[1:], non0Vec[1:])
@@ -113,8 +114,7 @@ if __name__ == "__main__":
     start=time.time()
     x, y, featureNames = loadData()
     trainX, trainY, valX, valY, testX, testY = splitData(x, np.sqrt(y), 4000, 5000)
-    #minLamb = regularization(trainX.T, trainY, 0.5, np.zeros(trainX[0].size), valX.T, valY)
-    minLamb=1.4817697853688347
+    minLamb = regularization(trainX.T, trainY, 0.5, np.zeros(trainX[0].size), valX.T, valY)
 
     print("Minimum lambda: " + str(minLamb))
 
@@ -129,6 +129,6 @@ if __name__ == "__main__":
 
     print("Execution Time: "+str(time.time()-start))
 
-    print("Features: "+featureNames[w != 0])
-    print("Weights: "+str(w[w!=0]))
+    for i in np.flip(np.argsort(abs(w)))[0:11]:
+        print("Feature: "+str(featureNames[i]) + " Weight: "+str(w[i]))
     plt.show()

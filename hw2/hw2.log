@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.11.1)  1 NOV 2018 21:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.11.1)  1 NOV 2018 23:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -481,8 +481,89 @@ Underfull \hbox (badness 10000) in paragraph at lines 416--425
 
  []
 
+<ErrorvsLambda.pdf, id=91, 515.44443pt x 400.9354pt>
+File: ErrorvsLambda.pdf Graphic file (type pdf)
+<use ErrorvsLambda.pdf>
+Package pdftex.def Info: ErrorvsLambda.pdf  used on input line 433.
+(pdftex.def)             Requested size: 289.07999pt x 224.85875pt.
+<NonzerovsLambdaYelp.pdf, id=92, 517.7813pt x 400.9354pt>
+File: NonzerovsLambdaYelp.pdf Graphic file (type pdf)
+<use NonzerovsLambdaYelp.pdf>
+Package pdftex.def Info: NonzerovsLambdaYelp.pdf  used on input line 434.
+(pdftex.def)             Requested size: 289.07999pt x 223.85544pt.
 
-Overfull \hbox (3.37881pt too wide) in paragraph at lines 439--443
+Underfull \hbox (badness 10000) in paragraph at lines 433--435
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 436--440
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 441--452
+
+ []
+
+[9 <./ErrorvsLambda.pdf> <./NonzerovsLambdaYelp.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./NonzerovsLambdaYelp.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+>] [10]
+Overfull \hbox (181.79689pt too wide) in paragraph at lines 520--521
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (121.79628pt too wide) in paragraph at lines 521--522
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (205.79713pt too wide) in paragraph at lines 533--534
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (145.79652pt too wide) in paragraph at lines 534--535
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][] 
+ []
+
+[11]
+Overfull \hbox (13.79518pt too wide) in paragraph at lines 571--572
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (61.79567pt too wide) in paragraph at lines 572--574
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (247.79756pt too wide) in paragraph at lines 579--580
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (307.79817pt too wide) in paragraph at lines 581--582
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (277.79787pt too wide) in paragraph at lines 583--585
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (3.37881pt too wide) in paragraph at lines 600--604
 \OT1/cmr/m/n/10 Note that the off-set term $\OML/cmm/m/it/10 b$ \OT1/cmr/m/n/10
  is not reg-u-lar-ized. For all ex-per-i-ments, use $\OML/cmm/m/it/10 ^^U \OT1/
 cmr/m/n/10 = 10[]$. Let $\OML/cmm/m/it/10 ^^V[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
@@ -490,54 +571,59 @@ cmr/m/n/10 = 10[]$. Let $\OML/cmm/m/it/10 ^^V[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+Underfull \hbox (badness 10000) in paragraph at lines 605--606
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--450
-
- []
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 451--453
+Underfull \hbox (badness 10000) in paragraph at lines 607--611
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 458--459
+Underfull \hbox (badness 10000) in paragraph at lines 612--614
 
  []
 
-[9] (./hw2.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 615--618
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 619--620
+
+ []
+
+[13] (./hw2.aux) ) 
 Here is how much of TeX's memory you used:
- 6252 strings out of 492640
- 84977 string characters out of 6131738
- 221774 words of memory out of 5000000
- 10019 multiletter control sequences out of 15000+600000
+ 6295 strings out of 492640
+ 85637 string characters out of 6131738
+ 225774 words of memory out of 5000000
+ 10060 multiletter control sequences out of 15000+600000
  17572 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,20n,43p,416b,1733s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on hw2.pdf (9 pages, 226903 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
+2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on hw2.pdf (13 pages, 255726 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 84 compressed objects within 1 object stream
+ 229 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

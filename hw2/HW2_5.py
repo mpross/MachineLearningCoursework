@@ -31,107 +31,41 @@ def one_hot(inpt):
     return output
 
 
-def train(X, y, lamb):
-    w = np.linalg.solve(np.dot(X.T, X) + lamb * np.identity(X.shape[1]), np.dot(X.T, y))
-    return w
+def sort(x, inlist):
+    xOut=x[np.where(np.logical_or(inlist==2 , inlist==7))]
+    outList = inlist[np.where(np.logical_or(inlist == 2, inlist == 7))]
+
+    return xOut, outList
 
 
-def predict(w, x):
-    y = np.dot(w.T, x.T)
-    return np.argmax(y, axis=0)
+def mu(x, y, b, w):
+    return 1/(1+np.exp(-y*(b+np.dot(x,w))))
 
+def J(x, y, b, w, lamb):
+    sum=0
+    for i in range(y.size):
+        sum+=np.log(mu(x[i], y[i], b, w))
 
-def generateTransform(inpt, p, sigma):
-    G = sigma * np.random.randn(inpt.shape[1], p)
-    b = np.random.uniform(0, 2 * np.pi, (1, p))
+    sum/=y.size
+    sum+=lamb*np.dot(w,w)
+    return sum
 
-    return G, b
-
-
-def transform(inpt, G, b):
-    out = np.cos(np.dot(inpt, G) + b)
-    return out
-
-
-def split(x, y, ylist, frac):
-    index = random.sample(range(x.shape[0]), int(x.shape[0] * frac))
-    xmajor = x[index]
-    xminor = np.delete(x, index, 0)
-    ymajor = y[index]
-    yminor = np.delete(y, index, 0)
-    listmajor = ylist[index]
-    listminor = np.delete(ylist, index, 0)
-
-    return xmajor, xminor, ymajor, yminor, listmajor, listminor
-
+def gradDescent(x, y, lamb, w0):
+    w=w0
+    for i in range(100):
+        print(x.shape)
+        print(w.shape)
+        b=np.sum(y-np.dot(x,w))
+        w= 0.1*np.dot(np.dot(y,x), (1-mu(x, y, b, w)))+(1-lamb)*w
+        print(np.dot(w,w))
 
 if __name__ == "__main__":
     load_dataset()
 
-    y_train = one_hot(labels_train)
-    w = train(X_train, y_train, 10 ** -4)
+    xTrain, trainLabels=sort(X_train, labels_train)
+    y_train = one_hot(trainLabels)
 
-    print("No transformation")
-    print("Training Accuracy: " + str(sum(predict(w, X_train) == labels_train) / len(X_train) * 100) + "%")
-    print("Testing Accuracy: " + str(sum(predict(w, X_test) == labels_test) / len(X_test) * 100) + "%")
+    xTest, testLabels = sort(X_test, labels_test)
+    y_test = one_hot(testLabels)
 
-    pmax = 1 * 10 ** 4
-    trainErr = np.zeros((pmax, 1))
-    valErr = np.zeros((pmax, 1))
-    for p in range(1, pmax):
-        start = time.time()
-        G, b = generateTransform(X_train, p, np.sqrt(0.1))
-        transX = transform(X_train, G, b)
-        trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
-        w = train(trainX, trainY, 10 ** -4)
-        trainErr[p] = sum(predict(w, trainX) == trainList) / len(trainX) * 100
-        valErr[p] = sum(predict(w, valX) == valList) / len(valX) * 100
-        end = time.time()
-        print(str(round(p / pmax * 100, 3)) + "% Done")
-        print(str(round((end - start) * (pmax - p), 2)) + " s left")
-
-    pOpt = np.argmax(valErr)
-    G, b = generateTransform(X_train, p, 0.01)
-    transX = transform(X_train, G, b)
-    trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
-    w = train(trainX, trainY, 10 ** -4)
-
-    print("With transformation")
-    print("Training Accuracy: " + str(sum(predict(w, trainX) == trainList) / len(trainX) * 100) + "%")
-    print("Testing Accuracy: " + str(sum(predict(w, transform(X_test, G, b)) == labels_test) / len(X_test) * 100) + "%")
-
-    plt.plot(trainErr)
-    plt.plot(valErr)
-    plt.grid()
-    plt.ylabel("Accuracy (%)")
-    plt.xlabel("p")
-    plt.legend(("Training Accuracy", "Validation Accuracy"))
-    plt.tight_layout()
-    plt.savefig("CrossVal.pdf")
-
-load_dataset()
-
-y_train = one_hot(labels_train)
-w = train(X_train, y_train, 10 ** -4)
-
-pmax = 1 * 10 ** 3
-trainErr = np.zeros((pmax, 1))
-valErr = np.zeros((pmax, 1))
-
-for p in range(1, pmax):
-    start = time.time()
-    G, b = generateTransform(X_train, p, np.sqrt(0.1))
-    transX = transform(X_train, G, b)
-    trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
-    w = train(trainX, trainY, 10 ** -4)
-    trainErr[p] = sum(predict(w, trainX) == trainList) / len(trainX) * 100
-    valErr[p] = sum(predict(w, valX) == valList) / len(valX) * 100
-    end = time.time()
-    print(str(round(p / pmax * 100, 3)) + "% Done")
-    print(str(round((end - start) * (pmax - p), 2)) + " s left")
-
-pOpt = np.argmax(valErr)
-G, b = generateTransform(X_train, p, 0.01)
-transX = transform(X_train, G, b)
-trainX, valX, trainY, valY, trainList, valList = split(transX, y_train, labels_train, 0.8)
-w = train(trainX, trainY, 10 ** -4)
+    gradDescent(xTrain.T,y_train,0.1,np.zeros(y_train.shape))
