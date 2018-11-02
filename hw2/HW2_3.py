@@ -65,9 +65,10 @@ def regularization(x, y, delta, w0, wTrue):
     lambVec = np.array((0, lamb))
     FDRVec = np.array((0, FDR))
     TPRVec = np.array((0, TPR))
-    while np.sum(w != 0) <= 0.9 * x.T[0].size:
 
-        lamb = lambVec[-1]*0.9
+    while np.sum(w != 0) <= 0.99 * x.T[0].size:
+
+        lamb = lambVec[-1]*0.75
         w = coordDescent(x, y, lamb, delta, w)
         non0 = np.sum(w != 0)
 
@@ -82,13 +83,27 @@ def regularization(x, y, delta, w0, wTrue):
     plt.figure(1)
     plt.plot(lambVec[1:], non0Vec[1:])
     plt.xscale('log')
+    plt.xlabel('lambda')
+    plt.ylabel('Non-Zero Elements')
     plt.draw()
+    plt.savefig('NonzerovsLambda.pdf', bbox_inches='tight')
 
     plt.figure(2)
-    plt.plot(lambVec[1:], FDRVec[1:])
-    plt.plot(lambVec[1:], TPRVec[1:])
+    plt.plot(lambVec[1:], FDRVec[1:], label="FDR")
+    plt.plot(lambVec[1:], TPRVec[1:], label="TPR")
     plt.xscale('log')
+    plt.xlabel('lambda')
+    plt.legend()
     plt.draw()
+    plt.savefig('FDR&TPRvsLambda.pdf', bbox_inches='tight')
+
+    plt.figure(3)
+    plt.plot(FDRVec[1:], TPRVec[1:])
+    plt.xlabel('FDR')
+    plt.ylabel('TPR')
+    plt.axis([0, 1, 0, 1])
+    plt.draw()
+    plt.savefig('FDRvsTPR.pdf', bbox_inches='tight')
 
     return w
 
@@ -96,8 +111,9 @@ def regularization(x, y, delta, w0, wTrue):
 
 
 if __name__ == "__main__":
+    start=time.time()
     x, y, wTrue = generateSynth(n, d, k, sigma)
 
     w = regularization(x, y, 0.01, np.zeros(d), wTrue)
-
+    print("Execution Time: "+str(time.time()-start))
     plt.show()
