@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import random
 import time
 
-n=4000
 
 def loadData():
     # Load a csv of floats:
@@ -15,13 +14,16 @@ def loadData():
     return X, y, featureNames
 
 
-def splitData(x, y, index):
-    xmajor = x[:index]
-    xminor = x[index:]
-    ymajor = y[:index]
-    yminor = y[index:]
+def splitData(x, y, index1, index2):
+    trainX = x[:index1]
+    valX = x[index1:index2]
+    testX = x[index2:]
 
-    return xmajor, ymajor, xminor, yminor
+    trainY = y[:index1]
+    valY = y[index1:index2]
+    testY = y[index2:]
+
+    return trainX, trainY, valX, valY, testX, testY
 
 
 def coordDescent(x, y, lamb, delta, w0):
@@ -49,44 +51,45 @@ def coordDescent(x, y, lamb, delta, w0):
                 diff[k] = 0
                 w[k] = 0
 
-
-        print(np.dot(y-np.dot(x.T, w)-b, y-np.dot(x.T, w)-b))
-        print(np.max(np.abs(diff)))
-
         if np.max(np.abs(diff)) < delta:
             break
 
     return w
 
 
-def regularization(x, y, delta, w0, xTrain, yTrain):
+def regularization(x, y, delta, w0, xVal, yVal):
 
     lamb = np.max(2*np.abs(np.dot(x, (y-(np.sum(y)/y.size)))))
     w = coordDescent(x, y, lamb, delta, w0)
-    valErr = np.dot(np.square(yTrain) - np.square(np.dot(w, xTrain)), np.square(yTrain) - np.square(np.dot(w, xTrain)))
-    testErr = np.dot(np.square(y) - np.square(np.dot(w, x)), np.square(y) - np.square(np.dot(w, x)))
+    valErr = np.dot(np.square(yVal) - np.square(np.dot(w, xVal)), np.square(yVal) - np.square(np.dot(w, xVal)))
+    trainErr = np.dot(np.square(y) - np.square(np.dot(w, x)), np.square(y) - np.square(np.dot(w, x)))
+    non0 = np.sum(w != 0)
 
     lambVec = np.array((0, lamb))
     valErrVec = np.array((0, valErr))
-    testErrVec = np.array((0, testErr))
+    trainErrVec = np.array((0, trainErr))
+    non0Vec = np.array((0, non0))
 
     while np.sum(w != 0) <= 0.75 * x.T[0].size:
 
         lamb = lambVec[-1]*0.75
         w = coordDescent(x, y, lamb, delta, w)
-        valErr = np.dot(np.square(yTrain) - np.square(np.dot(w, xTrain)), np.square(yTrain) - np.square(np.dot(w, xTrain)))
-        testErr = np.dot(np.square(y) - np.square(np.dot(w, x)), np.square(y) - np.square(np.dot(w, x)))
+        valErr = np.dot(np.square(yVal) - np.square(np.dot(w, xVal)), np.square(yVal) - np.square(np.dot(w, xVal)))
+        trainErr = np.dot(np.square(y) - np.square(np.dot(w, x)), np.square(y) - np.square(np.dot(w, x)))
+        non0 = np.sum(w != 0)
 
         lambVec = np.append(lambVec, lamb)
         valErrVec = np.append(valErrVec, valErr)
-        testErrVec = np.append(testErrVec, testErr)
+        trainErrVec = np.append(trainErrVec, trainErr)
+        non0Vec = np.append(non0Vec, non0)
 
-    print(valErrVec[1:].size)
-    print(testErrVec[1:].size)
+        print(str(round(np.sum(w != 0)/(0.75 * x.T[0].size)*100, 1))+"% Done")
+
+    minLamb=lambVec[np.argmin(valErrVec[1:])]
 
     plt.figure(1)
-    plt.plot(lambVec[1:], valErrVec[1:]/x[1].size, label='Validation Error')
-    plt.plot(lambVec[1:], testErrVec[1:]/xTrain[1].size, label='Test Error')
+    plt.plot(lambVec[1:], valErrVec[1:]/xVal[1].size, label='Validation Error')
+    plt.plot(lambVec[1:], trainErrVec[1:]/x[1].size, label='Train Error')
     plt.xscale('log')
     plt.xlabel('lambda')
     plt.ylabel('Error')
@@ -95,16 +98,37 @@ def regularization(x, y, delta, w0, xTrain, yTrain):
     plt.savefig('ErrorvsLambda.pdf', bbox_inches='tight')
     plt.gca().invert_xaxis()
 
-    return w
+    plt.figure(2)
+    plt.plot(lambVec[1:], non0Vec[1:])
+    plt.xscale('log')
+    plt.xlabel('lambda')
+    plt.ylabel('Non-Zero Elements')
+    plt.draw()
+    plt.savefig('NonzerovsLambdaYelp.pdf', bbox_inches='tight')
+
+    return minLamb
 
 
 if __name__ == "__main__":
     start=time.time()
     x, y, featureNames = loadData()
+    trainX, trainY, valX, valY, testX, testY = splitData(x, np.sqrt(y), 4000, 5000)
+    #minLamb = regularization(trainX.T, trainY, 0.5, np.zeros(trainX[0].size), valX.T, valY)
+    minLamb=1.4817697853688347
 
-    trainX, trainY, valX, valY = splitData(x, np.sqrt(y), n)
+    print("Minimum lambda: " + str(minLamb))
 
-    w = regularization(trainX.T, trainY, 0.5, np.zeros(trainX[0].size), valX.T, valY)
+    w = coordDescent(trainX.T, trainY, minLamb, 0.5, np.zeros(trainX[0].size))
+
+    print("Validation Error: " + str(
+        np.dot(np.square(valY) - np.square(np.dot(w, valX.T)), np.square(valY) - np.square(np.dot(w, valX.T)))/valY.size))
+    print("Training Error: " + str(
+        np.dot(np.square(trainY) - np.square(np.dot(w, trainX.T)), np.square(trainY) - np.square(np.dot(w, trainX.T)))/trainY.size))
+    print("Testing Error: " + str(
+        np.dot(np.square(testY) - np.square(np.dot(w, testX.T)), np.square(testY) - np.square(np.dot(w, testX.T)))/testY.size))
 
     print("Execution Time: "+str(time.time()-start))
+
+    print("Features: "+featureNames[w != 0])
+    print("Weights: "+str(w[w!=0]))
     plt.show()

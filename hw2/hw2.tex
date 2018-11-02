@@ -12,6 +12,7 @@
 % \usepackage[pdfborder={0 0 1},colorlinks=true,citecolor=black,plainpages=false]{hyperref}
 \usepackage{fancyhdr}
 \usepackage[ruled]{algorithm2e}
+\usepackage{listings}
 % \usepackage{multirow}
 \newcommand{\field}[1]{\mathbb{#1}}
 \newcommand{\1}{\mathbf{1}}
@@ -50,8 +51,7 @@
 \begin{document}
 \title{Homework \#2}
 \author{\normalsize{CSE 546: Machine Learning}\\
-\normalsize{Prof. Kevin Jamieson} \\
-\normalsize{Due: 11/1/2018  11:59 PM}}
+\normalsize{Michael Ross}}
 \maketitle
 
 \section{A Taste of Learning Theory}
@@ -69,6 +69,17 @@ We say a classifier $\delta$ is \emph{deterministic} if $\alpha(x,y) \in \{0,1\}
 A Bayes classifier is defined as $\delta_* \in \arg\inf_\delta R(\delta)$ where the infimum is taken over all randomized classifiers (note it may not be unique). 
 For an arbitrary $P_{XY}$, characterize the set of all Bayes Classifiers (i.e., for a given $x$ what are permissible Bayes classifiers in terms of $\alpha(x,y)$).
 Then propose a deterministic decision rule that is a Bayes classifier.\\
+
+\textbf{Answer:}\\
+$R(\delta) = \E_{XY,\delta}[ \1\{ \delta(X) \neq Y \}]$\\
+$= \E_{XY}[ \E_{\delta}[\1\{ \delta(x) \neq y \} | X=x, Y=y]]$\\
+$= \E_{XY}[ \alpha(X,Y)]$\\
+$=\sum_{y=1}^K \int_0^\infty P_{XY} \alpha(x,y) dx $\\
+$\leq \sum_{y=1}^K \int_0^\infty P_{XY} \text{ max} (\alpha(x,y)) dx $\\
+$\leq \text{ max} (\alpha(x,y)) \sum_{y=1}^K \int_0^\infty P_{XY}  dx $\\
+
+$\sum_{y=1}^K \int_0^\infty P_{XY}  dx = 1$ due to conservation of probability\\
+
 
 
 2. \grade{8} 
@@ -96,6 +107,13 @@ Recall Hoeffding's inequality: if $Z_1,\dots,Z_m$ are i.i.d. random variables on
   \begin{align*}
   \P( | \widehat{R}_n(\widetilde{f}) - R(\widetilde{f}) | \leq A ) \geq 1- \delta.
   \end{align*}
+  
+  \textbf{Answer:}\\
+   Since $\widetilde{f}$ was not created based on our drawn data and our drawn data are i.i.d, Hoeffding's inequality holds.\\
+   $\P( | \widehat{R}_n(\widetilde{f}) - R(\widetilde{f}) | \leq A ) \geq 1- 2 \exp\left(- \frac{2 n A^2}{(1-(-1))^2}\right)$\\
+   Let $\delta=2 \exp\left(- \frac{n A^2}{2}\right)$\\
+   $A=\sqrt{\frac{2}{n}\log(\delta/2)} $
+  
   \item After seeing the confidence interval, the domain expert is not satisfied with her classifying rule $\widetilde{f}$. Because she understands the underlying process that generated the data, she proposes a finite set of alternative classifying rules $\mathcal{F} = \{ f_1,\dots,f_k \}$ that may fit the data better.
   The ``best in class'' function $f^*$ is:
   \[
@@ -116,6 +134,10 @@ Recall Hoeffding's inequality: if $Z_1,\dots,Z_m$ are i.i.d. random variables on
 \leq B ) \geq 1- \delta
 \]
 Show your steps. (Hint: for events $\mathcal{E}_1, \mathcal{E}_2, \ldots, \mathcal{E}_k$, the ``union bound'' states that  $\P(\mathcal{E}_1 \textrm{ or } \mathcal{E}_2 \textrm{ or } \dots \text{ or } \mathcal{E}_k) = \P(\bigcup_{i=1}^k \mathcal{E}_i ) \leq \sum_{i=1}^k \P(\mathcal{E}_k)$.)
+
+\textbf{Answer:}\\
+$\P( \textrm{for all } f\in\mathcal{F}, \, |\widehat R_n(f) -  R(f)| \leq B ) \geq 1- \delta = $\\
+
 \item Noting that $\widehat{f} \in \mathcal{F}$, provide a confidence interval for the loss of $\widehat f$ that holds with
   probability greater than $1-\delta$. In other words, we are seeking
   a bound on $|R(\widehat f)-\widehat R_n(\widehat f)|$ that holds with probability greater than $1-\delta$.
@@ -209,7 +231,6 @@ Before you get started, here are some hints that you may find helpful:
       This is helpful for choosing the first $\lambda$ in a regularization path. 
 \end{itemize}
 
-
 3. \grade{5}  We will first try out your solver with some synthetic data.
 A benefit of the Lasso is that if we believe many features are irrelevant for predicting ${y}$, the Lasso can be used to enforce a sparse solution, effectively differentiating between the relevant and irrelevant features.
 Suppose that ${x} \in \mathbb{R}^d, y \in \mathbb{R}, k < d$, and pairs of data $({x}_i, y_i)$ for $i=1,\dots,n$ are generated independently according to the model $y_i = w^T x_i + \epsilon_i$ where
@@ -230,6 +251,135 @@ With this model in mind, let $n = 500, d = 1000, k = 100,$ and $\sigma = 1$.  Ge
   In plot 2, plot these values with the x-axis as FDR, and the y-axis as TPR and note that in an ideal situation we would have an (FDR,TPR) pair in the upper left corner, but that can always trivially achieve $(0,0)$ and $(\tfrac{d-k}{d},1)$ 
 \end{itemize}      
   Comment on the effect of $\lambda$ in these two plots.\\
+  
+  \textbf{Answer:}\\
+  
+\includegraphics[width=4in]{NonzerovsLambda.pdf}\\
+It's clear that at some point it becomes harder to add new non-zero features as lambda decreases. I find it interesting that at the point of the true number of non-zero features it appears that the curvature switches from positive to negative.
+
+\includegraphics[width=4in]{FDRvsTPR.pdf}\\
+The fact that as you increase from a small number of features the number of true detection rate increases quickly while the false discovery rate doesn't increase as much makes sense because the true values are easy to find in this regime. Then as you pass some point the TPR gets stuck and you add continue growing the FDR because most of the true non-zeros have already been found.\\
+
+\textbf{Code:}
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+import time
+
+n=500
+d=1000
+k=100
+sigma=1
+
+def generateSynth(n, d, k, sigma):
+    x = sigma*np.random.randn(d, n)
+    j = np.array(range(1, k+1))
+    w = np.concatenate((j/k, np.zeros(d-k)))
+    y = np.dot(w, x)+np.random.randn(n)
+    return x, y, w
+
+def coordDescent(x, y, lamb, delta, w0):
+    d = x.T[0].size
+    n=x[0].size
+
+    a = np.zeros(d)
+    c = np.zeros(d)
+    diff = np.zeros(d)
+    w = w0
+    wLast=np.zeros(d)
+
+    while True:
+        b = np.sum(y-np.dot(w, x))/y.size
+        for k in range(1, d):
+            a[k] = 2 * np.dot(x[k], x[k])
+            wCut = np.copy(w)
+            wCut[k] = 0
+            c[k] = 2 * np.dot(x[k], (y - (b + np.dot(wCut, x))))
+            if c[k] < -lamb:
+                diff[k] = w[k]-(c[k]+lamb)/a[k]
+                w[k] = (c[k]+lamb)/a[k]
+            elif c[k] > lamb:
+                diff[k] = w[k] - (c[k] - lamb) / a[k]
+                w[k] = (c[k] - lamb) / a[k]
+            else:
+                diff[k] = 0
+                w[k] = 0
+
+
+        print(np.dot(y-np.dot(x.T, w)-b, y-np.dot(x.T, w)-b))
+        print(np.max(np.abs(diff)))
+
+        if np.max(np.abs(diff)) < delta:
+            break
+
+    return w
+
+
+def regularization(x, y, delta, w0, wTrue):
+
+    lamb = np.max(2*np.abs(np.dot(x, (y-(np.sum(y)/y.size)))))
+    w = coordDescent(x, y, lamb, delta, w0)
+    non0 = np.sum(w != 0)
+
+    FDR = np.sum(np.logical_and(wTrue == 0, w != 0)) / np.sum(w != 0)
+    TPR = np.sum(np.logical_and(wTrue != 0, w != 0)) / np.sum(wTrue != 0)
+
+    non0Vec = np.array((0, non0))
+    lambVec = np.array((0, lamb))
+    FDRVec = np.array((0, FDR))
+    TPRVec = np.array((0, TPR))
+
+    while np.sum(w != 0) <= 0.99 * x.T[0].size:
+
+        lamb = lambVec[-1]*0.75
+        w = coordDescent(x, y, lamb, delta, w)
+        non0 = np.sum(w != 0)
+
+        FDR = np.sum(np.logical_and(wTrue == 0, w != 0)) / np.sum(w != 0)
+        TPR = np.sum(np.logical_and(wTrue != 0, w != 0)) / np.sum(wTrue != 0)
+
+        non0Vec = np.append(non0Vec, non0)
+        lambVec = np.append(lambVec, lamb)
+        FDRVec = np.append(FDRVec, FDR)
+        TPRVec = np.append(TPRVec, TPR)
+
+    plt.figure(1)
+    plt.plot(lambVec[1:], non0Vec[1:])
+    plt.xscale('log')
+    plt.xlabel('lambda')
+    plt.ylabel('Non-Zero Elements')
+    plt.draw()
+    plt.savefig('NonzerovsLambda.pdf', bbox_inches='tight')
+
+    plt.figure(2)
+    plt.plot(lambVec[1:], FDRVec[1:], label="FDR")
+    plt.plot(lambVec[1:], TPRVec[1:], label="TPR")
+    plt.xscale('log')
+    plt.xlabel('lambda')
+    plt.legend()
+    plt.draw()
+    plt.savefig('FDR&TPRvsLambda.pdf', bbox_inches='tight')
+
+    plt.figure(3)
+    plt.plot(FDRVec[1:], TPRVec[1:])
+    plt.xlabel('FDR')
+    plt.ylabel('TPR')
+    plt.axis([0, 1, 0, 1])
+    plt.draw()
+    plt.savefig('FDRvsTPR.pdf', bbox_inches='tight')
+
+    return w
+
+
+if __name__ == "__main__":
+    start=time.time()
+    x, y, wTrue = generateSynth(n, d, k, sigma)
+
+    w = regularization(x, y, 0.01, np.zeros(d), wTrue)
+    print("Execution Time: "+str(time.time()-start))
+    plt.show()
+\end{lstlisting}
 
 4. \grade{5} We'll now put the Lasso to work on some real data from Yelp (an old Kaggle competition, see \url{http://www.kaggle.com/c/yelp-recruiting} for background, but get the data from the class website).
 
@@ -291,7 +441,26 @@ Note that the offset term $b$ is not regularized.
 For all experiments, use $\lambda = 10^{-1}$. 
 Let $\mu_i(w,b) = \frac{1}{1+ \exp(-y_i (b + x_i^T w))}$. 
 \begin{enumerate}
-  \item Derive the gradients $\nabla_w J(w,b)$, $\nabla_{b} J(w,b)$ and Hessians $\nabla_w^2 J(w,b)$, $\nabla_{b}^2 J(w,b)$ and give your answers in terms of $\mu_i(w,b)$ (your answers should not contain exponentials).
+  \item Derive the gradients $\nabla_w J(w,b)$, $\nabla_{b} J(w,b)$ and Hessians $\nabla_w^2 J(w,b)$, $\nabla_{b}^2 J(w,b)$ and give your answers in terms of $\mu_i(w,b)$ (your answers should not contain exponentials).\\
+  
+  \textbf{Answer:}\\
+  $\nabla_w J(w,b)=\frac{1}{n} \sum_{i=1}^n \frac{-y_i x_i \exp(-y_i (b + x_i^T w))}{ 1 + \exp(-y_i (b + x_i^T w))} + \lambda 2 w$\\
+  $=\frac{1}{n} \sum_{i=1}^n -y_i x_i (\frac{1}{\mu_i}-1) \mu_i  + 2\lambda w$\\
+  $=\frac{1}{n} \sum_{i=1}^n -y_i x_i (1-\mu_i)  + 2\lambda w$\\
+  
+  $\nabla_w J(w,b)=\frac{1}{n} \sum_{i=1}^n \frac{-y_i \exp(-y_i (b + x_i^T w))}{ 1 + \exp(-y_i (b + x_i^T w))}$\\
+  $=\frac{1}{n} \sum_{i=1}^n -y_i (1-\mu_i) $\\
+  
+  $\nabla_w \mu_i= \frac{y_i x_i\exp(-y_i (b + x_i^T w))}{(1+ \exp(-y_i (b + x_i^T w)))^2}$\\
+ $ = y_i x_i (\frac{1}{\mu_i}-1) \mu_i^2$\\
+ $ = y_i x_i (\mu_i- \mu_i^2)$
+ 
+  $\nabla_b \mu_i= y_i  (\mu_i- \mu_i^2)$\\
+  
+  $\nabla_w^2 J(w,b)=\frac{1}{n} \sum_{i=1}^n y_i^2 x_i x_i^T (\mu_i- \mu_i^2)+2\lambda $\\
+   $\nabla_b^2 J(w,b)=\frac{1}{n} \sum_{i=1}^n y_i^2 (\mu_i- \mu_i^2) $
+  
+  
   \item Implement gradient descent with an initial iterate of all zeros. Try several values of step sizes to find one that appears to make $J(w,b)$ on the training set converge the fastest. Run until you feel you are near to convergence.
   \begin{enumerate}
     \item For both the training set and the test, plot $J(w,b)$ as a function of the iteration number (and show both curves on the same plot).  

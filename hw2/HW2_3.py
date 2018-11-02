@@ -108,8 +108,6 @@ def regularization(x, y, delta, w0, wTrue):
     return w
 
 
-
-
 if __name__ == "__main__":
     start=time.time()
     x, y, wTrue = generateSynth(n, d, k, sigma)
