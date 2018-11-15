@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage[margin=0.5in]{geometry}
+\title{\vspace{-5ex}CSE 546: Project Proposal}
+\author{Michael Ross}
+\date{\vspace{-5ex}}
+\begin{document}
+\maketitle
+
+\section*{\large Title}
+Searching for Supernovae with Machine Learning
+
+\section*{\large Data}
+ Interferometer data:\\
+	LIGO Open Science Data: https://www.gw-openscience.org/start/\\
+Supernovae Waveforms: \\
+	Princeton:\\
+		https://www.astro.princeton.edu/~burrows/gw.web/index.html\\
+		
+\section*{\large Project Idea}
+
+\quad Currently gravitational waves (GW) are found in the LIGO data by matching filtering, effectively sliding a template along the time series and evaluating the likelihood that the template is in the data. Each template is unique to the properties and dynamics of the emitting system which forces us to apply a huge number of templates to the data to search the entire parameter space for a given system type. This is a robust and accurate way to find signals and measure their parameters but is very computationally intensive. George and Huerta had the idea of using Deep Learning to search for these signals instead. They trained two neural networks to hunt for compact binary coalescence (CBC) signals which are those of two merging black holes or neutron stars (the only signals we've seen thus far). One neural network was a classifier to find if there's a signal then the other found the most likely parameters of the signal.
+
+\quad I want to follow in these foot steps and make a machine learning algorithm to search for supernovae signals in the gravitational wave observatory data. These signals are very different and more unknown that the CBC signals so they are not the target of most GW searches and have a very different parameter space. Since this class is only a quarter, I would only attempt to make a classifier. We have only seen six true gravitational wave events and none of them from supernovae so I have to rely on injections to train my algorithm. This would entail getting chunks of real data from the observatories which does not contain any known signals, inject theoretical waveforms into a subset of them, and then split this into my training and testing data sets. I would then explore methods to find the best one, most likely a neural network like the CBC search. If I make an algorithm which works well this may allow me to search datasets in the future for supernovae signals with much less computing time than match filtering.
+\section*{\large Software}
+Data processing and signal injection code: custom python\\
+Supernovae search code: custom python
+
+\section*{\large Papers to Read}
+\begin{enumerate}
+\item{Observing Gravitational Waves from Core-Collapse Supernovae in the Advanced Detector Era: https://arxiv.org/abs/1511.02836}
+\item{Deep Learning for Real-time Gravitational Wave Detection and Parameter Estimation: Results with Advanced LIGO Data: https://arxiv.org/abs/1711.03121}
+\item{Deep Neural Networks to Enable Real-time Multimessenger Astrophysics: https://arxiv.org/abs/1701.00008}
+\end{enumerate}
+\section*{\large Teammates}
+None
+\section*{\large Milestone}
+For my milestone, I hope to have the data processing complete and a first attempt at a easy to make classifier, maybe a support vector machine or similar algorithms.
+
+
+\end{document}
