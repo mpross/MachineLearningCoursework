@@ -56,8 +56,7 @@
 \begin{document}
 \title{Homework \#3}
 \author{\normalsize{CSE 546: Machine Learning}\\
-\normalsize{Prof. Kevin Jamieson} \\
-\normalsize{Due: 11/20  11:59 PM}}
+\normalsize{Michael Ross}}
 \maketitle
 
 
@@ -66,12 +65,57 @@
 1. \grade{5} Let $\{(x_i,y_i)\}_{i=1}^n$ be sampled iid from a joint distribution $P_{XY}$ over $\R^d \times \R$ such that for some $w \in \R^d$ we have $y_i \sim \mathcal{N}(x_i^T w,\sigma^2)$. That is, $p(Y =y | x, w) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp(-\frac{(y-x^T w)^2}{2\sigma^2})$. Express your answers in terms of $\mb{X} = [x_1,\dots,x_n]^T$ and $\mb{y} = [y_1,\dots,y_n]^T$.
 \begin{enumerate}
   \item If $(\mb{X}^T \mb{X})^{-1}$ exists, what is the MLE of $w$?
+  
+  \textbf{Answer:}\\
+  Since y is drawn from a Gaussian, the MLE of w is the least square estimate of w:\\
+  $\widehat{w}_{MLE}= (\mb{X}^T \mb{X})^{-1}\mb{X}^T \mb{y}$
+  
   \item Assume that the true $w$ is drawn from a Gaussian prior distribution $p(w) = \frac{1}{(2 \pi \tau^2)^{d/2}} \exp(-\frac{\|w\|_2^2}{2\tau^2})$. What is the MAP estimate of $w$?
+  
+  \textbf{Answer:}\\
+  $\widehat{w}= \text{arg max}_w p(w | \mb{X,y})$\\
+  $= \text{arg max}_w \left[p(\mb{y}|w,\mb{X})p(w) \right]$\\
+  $= \text{arg max}_w \left[\frac{1}{(2\pi\sigma^2)^{d/2}} \exp(-\frac{\|\mb{y}-\mb{X} w\|_2^2}{2\sigma^2})\frac{1}{(2 \pi \tau^2)^{d/2}} \exp(-\frac{\|w\|_2^2}{2\tau^2}) \right]$\\
+    $= \text{arg max}_w \left[ \exp(-\frac{\|\mb{y}-\mb{X} w\|_2^2}{2\sigma^2}-\frac{\|w\|_2^2}{2\tau^2}) \right]$\\
+    Taking the derivative and setting equal to zero:\\
+    $0=\exp(-\frac{\|\mb{y}-\mb{X} w\|_2^2}{2\sigma^2}-\frac{\|w\|_2^2}{2\tau^2}) (\frac{\mb{X}^T(\mb{y}- \mb{X}w)}{\sigma^2}-\frac{w}{\tau^2})$\\
+    $\frac{\mb{X}^T(\mb{y}- \mb{X}w)}{\sigma^2}=\frac{w}{\tau^2}$\\
+    $\mb{X}^T\mb{y}- \mb{X}^T\mb{X}w=\frac{\sigma^2}{\tau^2} w$\\
+       $\widehat{w}_{MAP}=(\frac{\sigma^2}{\tau^2} \mb{I}+\mb{X}^T\mb{X})^{-1}\mb{X}^T\mb{y}$
+  
   \item Assuming the setting of part b, what is the posterior distribution $p(w| \mb{X}, \mb{y})$ of $w$? Give your answer in terms of $\mathcal{N}(\mu,\Sigma)$ for some $\mu,\Sigma$. What is $\E[w | \mb{X}, \mb{y} ]$?
+  
+  \textbf{Answer:}\\
+  $ p(w | \mb{X,y})\propto p(\mb{y}|w,\mb{X})p(w)$\\
+  $\propto \exp(-\frac{\|\mb{y}-\mb{X} w\|_2^2}{2\sigma^2}-\frac{\|w\|_2^2}{2\tau^2})$\\
+  $\propto \exp(-\frac{(\mb{y}-\mb{X} w)^T (\mb{y}-\mb{X} w)}{2\sigma^2}-\frac{w^T w}{2\tau^2})$\\    
+  $\propto \exp(-\frac{(\mb{y}^T\mb{y}-w^T\mb{X}^T \mb{y}-\mb{y}^T\mb{X} w+w^T\mb{X}^T \mb{X} w)}{2\sigma^2}-\frac{w^T w}{2\tau^2})$\\  
+  
+  Since $w^T\mb{X}^T \mb{y}$ is a constant, $w^T\mb{X}^T \mb{y}=\mb{y}^T\mb{X} w$\\
+  Dropping term constant with respect to $w$\\  
+  
+  $\propto \exp(-\frac{1}{2 \sigma^2 }(w^T\mb{X}^T \mb{X} w-2 w^T\mb{X}^T \mb{y}+\frac{\sigma^2}{\tau^2} w^T w)$\\  
+   $\propto \exp(-\frac{1}{2 \sigma^2 }(w^T(\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})w-2 w^T\mb{X}^T \mb{y})$\\  
+   $\propto \exp(-\frac{(\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})}{2 \sigma^2 }(w^T w-2 w^T (\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})^{-1}\mb{X}^T \mb{y})$\\     
+   
+   Adding constant to complete the square\\
+   $\propto \exp(-\frac{(\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})}{2 \sigma^2 }\|w-(\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})^{-1}\mb{X}^T \mb{y}\|_2^2)$\\     
+$=\mathcal{N}((\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})^{-1}\mb{X}^T \mb{y},\sigma^2 (\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})^{-1})$
+
+$\E[w | \mb{X}, \mb{y} ]=(\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})^{-1}\mb{X}^T \mb{y}=\widehat{w}_{MAP}$
+  
   \item Fix a $z \in \R^d$. If $f_z = z^T w$ is the predicted function value at $z$. Show that
   \begin{align*}
     f_z | \mb{X},\mb{y} \sim \mathcal{N}( z^T( \tfrac{\sigma^2}{\tau^2}I + \mb{X}^T \mb{X})^{-1} \mb{X}^T \mb{y}, \sigma^2 z^T ( \tfrac{\sigma^2}{\tau^2}I + \mb{X}^T \mb{X})^{-1} z )
   \end{align*}
+  
+  \textbf{Answer:}\\
+  For a generic $x \sim \mathcal{N}(\mu,\Sigma)$ and $y=a^T x +b$\\
+  $y \sim \mathcal{N}(a^T \mu+b , a^T \Sigma a)$\\
+  
+  Since $w\sim \mathcal{N}((\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})^{-1}\mb{X}^T \mb{y},\sigma^2 (\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})^{-1})$\\
+ $ f_z \sim \mathcal{N}(z^T(\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})^{-1}\mb{X}^T \mb{y},z^T \sigma^2 (\mb{X}^T \mb{X} +\frac{\sigma^2}{\tau^2} \mb{I})^{-1} z)$
+  
   \item The matrix inversion identity says that for matrices $A, U, C, V$ of the appropriate sizes and when $A^{-1}$ exists, we have
   \begin{align*}
     (A+UCV)^{-1} = A^{-1} - A^{-1} U (C^{-1} + V A^{-1} U)^{-1} V A^{-1}.
