@@ -65,15 +65,21 @@ def svd_series(test, train):
     plt.figure()
     plt.plot(dList, train_err_mse[1:])
     plt.plot(dList, test_err_mse[1:])
+    plt.xlabel('d')
+    plt.ylabel('Error')
     plt.legend(('Training Error', 'Testing Error'))
     plt.title('Mean Squared Error')
+    plt.savefig('Figures/svd_err_mse.pdf')
     plt.draw()
 
     plt.figure()
     plt.plot(dList, train_err_mae[1:])
     plt.plot(dList, test_err_mae[1:])
+    plt.xlabel('d')
+    plt.ylabel('Error')
     plt.legend(('Training Error', 'Testing Error'))
     plt.title('Mean Absolute Error')
+    plt.savefig('Figures/svd_err_mae.pdf')
     plt.draw()
 
 
@@ -82,17 +88,17 @@ def loss_min(train, d, lamb):
     u = np.random.randn(train.shape[0], d)
 
     lastErr = 10**100
-    for i in range(10**4):
+    for i in range(20):
         if i % 2 == 0:
             v = np.linalg.solve(np.dot(u.T, u) + lamb, u.T*train)
 
         else:
             u = np.linalg.solve(np.dot(v, v.T) + lamb, (train*v.T).T).T
 
-        if np.sum(np.abs(np.dot(u, v) - train)**2) > lastErr:
+        if np.sum(np.sum(np.dot((np.dot(u, v) - train).T, (np.dot(u, v) - train)))) > lastErr:
             break
 
-        lastErr = np.sum(np.abs(np.dot(u, v) - train)**2)
+        lastErr = np.sum(np.sum(np.dot((np.dot(u, v) - train).T, (np.dot(u, v) - train))))
 
         print(i, lastErr)
 
@@ -111,14 +117,32 @@ def loss_reg(test, train, val, d):
 
 
 test, train, val = read_data()
-
+#
 # v = av_user_estimator(train)
 # ons = np.ones((1, test.shape[0]))
 # err = np.sum(ons.size * v.T * v - v.T * ons * test - test.T * ons.T * v + test.T * test) / test.nnz
 # print('Average User Error: '+str(err))
 #
 # svd_series(test, train)
+#
+# loss_reg(test, train, val, 3)
 
-loss_reg(test, train, val, 3)
+dList=[1, 2, 5, 10, 20, 50]
+errTest=np.zeros(1)
+errTrain=np.zeros(1)
+for d in dList:
+    u, v = loss_min(train, d, 0)
+    errTrain = np.append(errTrain, np.sum(np.sum(np.square(np.dot(u, v) - train)))/train.nnz)
+    errTest = np.append(errTest, np.sum(np.sum(np.square(np.dot(u, v) - test)))/test.nnz)
+
+plt.figure()
+plt.plot(dList, errTrain[1:])
+plt.plot(dList, errTest[1:])
+plt.xlabel('d')
+plt.ylabel('Error')
+plt.legend(('Training Error', 'Testing Error'))
+plt.title('Mean Squared Error')
+plt.savefig('Figures/loss_err_mse.pdf')
+plt.draw()
 
 plt.show()

@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb03f8d7-d411-49d7-8572-fbaeb5f28d32" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw3.aux" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw3.log" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw3.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw3.tex" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw3_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw3_3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw3_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw3_4.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw3_5.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw3_5.py" afterDir="false" />
     </list>
@@ -26,34 +31,34 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="6" />
+          <entry key="py" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="6" />
+          <entry key="Python" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="40" />
-          <entry key="py" value="6956" />
+          <entry key="Python Console" value="146" />
+          <entry key="py" value="8889" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="6996" />
+          <entry key="Python" value="9035" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hw3_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="99" column="19" lean-forward="true" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
+            <state relative-caret-position="415">
+              <caret line="117" column="21" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -61,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw3_4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+            <state relative-caret-position="325">
+              <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -76,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw3_5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+            <state relative-caret-position="775">
+              <caret line="133" column="30" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -108,9 +113,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/hw3_3.py" />
-        <option value="$PROJECT_DIR$/hw3_5.py" />
         <option value="$PROJECT_DIR$/hw3_4.py" />
+        <option value="$PROJECT_DIR$/hw3_5.py" />
+        <option value="$PROJECT_DIR$/hw3_3.py" />
       </list>
     </option>
   </component>
@@ -155,7 +160,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.hw3_4">
+  <component name="RunManager" selected="Python.hw3_3">
     <configuration name="hw3_3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="hw3" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -248,9 +253,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.hw3_4" />
-        <item itemvalue="Python.hw3_5" />
         <item itemvalue="Python.hw3_3" />
+        <item itemvalue="Python.hw3_5" />
+        <item itemvalue="Python.hw3_4" />
         <item itemvalue="Python.setup" />
       </list>
     </recent_temporary>
@@ -303,40 +308,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python3.6/dist-packages/numpy/linalg/linalg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw3_3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="99" column="19" lean-forward="true" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.6/dist-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw3_5.py">
+    <entry file="file:///usr/local/lib/python3.6/dist-packages/numpy/linalg/linalg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="178">
+          <caret line="214" selection-start-line="214" selection-end-line="214" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.6/dist-packages/mpl_toolkits/mplot3d/axes3d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="1686" selection-start-line="1686" selection-end-line="1686" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.6/dist-packages/matplotlib/legend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="807" column="54" lean-forward="true" selection-start-line="807" selection-start-column="54" selection-end-line="807" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hw3_4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+        <state relative-caret-position="325">
+          <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hw3_5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="133" column="30" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hw3_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="117" column="21" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
