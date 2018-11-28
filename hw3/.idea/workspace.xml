@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb03f8d7-d411-49d7-8572-fbaeb5f28d32" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw3.aux" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.aux" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw3.log" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw3.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.synctex.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw3.tex" beforeDir="false" afterPath="$PROJECT_DIR$/hw3.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw3_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw3_3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw3_4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3_5.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw3_5.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,12 +20,13 @@
     <session id="-454725455">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -42,12 +42,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="146" />
-          <entry key="py" value="8889" />
+          <entry key="py" value="8910" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="9035" />
+          <entry key="Python" value="9056" />
         </counts>
       </usages-collector>
     </session>
@@ -57,8 +57,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hw3_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="117" column="21" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
+            <state relative-caret-position="703">
+              <caret line="70" column="29" lean-forward="true" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -69,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw3_4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
+            <state relative-caret-position="1746">
               <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -81,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw3_5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="775">
+            <state relative-caret-position="2340">
               <caret line="133" column="30" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -121,7 +121,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="34" />
-    <option name="width" value="1910" />
+    <option name="width" value="1920" />
     <option name="height" value="1005" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -130,6 +130,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -141,11 +142,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hw1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SuperFiltering" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -275,9 +275,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="34" width="1920" height="1005" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960339" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24960339" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -332,9 +331,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/hw3_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="70" column="29" lean-forward="true" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hw3_4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
+        <state relative-caret-position="1746">
           <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -344,18 +353,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hw3_5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
+        <state relative-caret-position="2340">
           <caret line="133" column="30" selection-start-line="133" selection-start-column="30" selection-end-line="133" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hw3_3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="117" column="21" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

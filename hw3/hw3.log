@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.11.1)  20 NOV 2018 22:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.11.1)  20 NOV 2018 23:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -369,4 +369,914 @@ Package pdftexcmds Info: \pdfdraftmode found.
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 38.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\c@lstlisting=\count122
+LaTeX Font Info:    Try loading font information for U+msa on input line 61.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 61.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 89--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--101
+
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 113--116
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--133
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 154.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 154.
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--162
+
+ []
+
+[2]
+<Figures/poly_kernel.pdf, id=26, 462.52798pt x 346.89601pt>
+File: Figures/poly_kernel.pdf Graphic file (type pdf)
+<use Figures/poly_kernel.pdf>
+Package pdftex.def Info: Figures/poly_kernel.pdf  used on input line 169.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+<Figures/rbf_kernel.pdf, id=27, 462.52798pt x 346.89601pt>
+File: Figures/rbf_kernel.pdf Graphic file (type pdf)
+<use Figures/rbf_kernel.pdf>
+Package pdftex.def Info: Figures/rbf_kernel.pdf  used on input line 170.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+ [3 <./Figures/poly_kernel.pdf> <./Figures/rbf_kernel.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/rbf_kernel.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+Overfull \hbox (109.79616pt too wide) in paragraph at lines 226--227
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][] 
+ []
+
+[4]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 234.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 234.
+ [5]
+Overfull \hbox (115.79622pt too wide) in paragraph at lines 292--293
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][] 
+ []
+
+[6]
+<Figures/error5.pdf, id=102, 462.52798pt x 346.89601pt>
+File: Figures/error5.pdf Graphic file (type pdf)
+<use Figures/error5.pdf>
+Package pdftex.def Info: Figures/error5.pdf  used on input line 380.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+<Figures/error10.pdf, id=103, 462.52798pt x 346.89601pt>
+File: Figures/error10.pdf Graphic file (type pdf)
+<use Figures/error10.pdf>
+Package pdftex.def Info: Figures/error10.pdf  used on input line 381.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+<Figures/error20.pdf, id=104, 462.52798pt x 346.89601pt>
+File: Figures/error20.pdf Graphic file (type pdf)
+<use Figures/error20.pdf>
+Package pdftex.def Info: Figures/error20.pdf  used on input line 382.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--383
+
+ []
+
+[7]
+<Figures/means5_0.pdf, id=110, 462.52798pt x 346.89601pt>
+File: Figures/means5_0.pdf Graphic file (type pdf)
+<use Figures/means5_0.pdf>
+Package pdftex.def Info: Figures/means5_0.pdf  used on input line 384.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means5_1.pdf, id=111, 462.52798pt x 346.89601pt>
+File: Figures/means5_1.pdf Graphic file (type pdf)
+<use Figures/means5_1.pdf>
+Package pdftex.def Info: Figures/means5_1.pdf  used on input line 385.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means5_2.pdf, id=112, 462.52798pt x 346.89601pt>
+File: Figures/means5_2.pdf Graphic file (type pdf)
+<use Figures/means5_2.pdf>
+Package pdftex.def Info: Figures/means5_2.pdf  used on input line 386.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means5_3.pdf, id=113, 462.52798pt x 346.89601pt>
+File: Figures/means5_3.pdf Graphic file (type pdf)
+<use Figures/means5_3.pdf>
+Package pdftex.def Info: Figures/means5_3.pdf  used on input line 387.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means5_4.pdf, id=114, 462.52798pt x 346.89601pt>
+File: Figures/means5_4.pdf Graphic file (type pdf)
+<use Figures/means5_4.pdf>
+Package pdftex.def Info: Figures/means5_4.pdf  used on input line 388.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 384--389
+
+ []
+
+[8 <./Figures/error5.pdf> <./Figures/error10.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/error10.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+> <./Figures/error20.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/error20.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>]
+<Figures/means10_0.pdf, id=191, 462.52798pt x 346.89601pt>
+File: Figures/means10_0.pdf Graphic file (type pdf)
+<use Figures/means10_0.pdf>
+Package pdftex.def Info: Figures/means10_0.pdf  used on input line 390.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means10_1.pdf, id=192, 462.52798pt x 346.89601pt>
+File: Figures/means10_1.pdf Graphic file (type pdf)
+<use Figures/means10_1.pdf>
+Package pdftex.def Info: Figures/means10_1.pdf  used on input line 391.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means10_2.pdf, id=193, 462.52798pt x 346.89601pt>
+File: Figures/means10_2.pdf Graphic file (type pdf)
+<use Figures/means10_2.pdf>
+Package pdftex.def Info: Figures/means10_2.pdf  used on input line 392.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means10_3.pdf, id=194, 462.52798pt x 346.89601pt>
+File: Figures/means10_3.pdf Graphic file (type pdf)
+<use Figures/means10_3.pdf>
+Package pdftex.def Info: Figures/means10_3.pdf  used on input line 393.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means10_4.pdf, id=195, 462.52798pt x 346.89601pt>
+File: Figures/means10_4.pdf Graphic file (type pdf)
+<use Figures/means10_4.pdf>
+Package pdftex.def Info: Figures/means10_4.pdf  used on input line 394.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means10_5.pdf, id=196, 462.52798pt x 346.89601pt>
+File: Figures/means10_5.pdf Graphic file (type pdf)
+<use Figures/means10_5.pdf>
+Package pdftex.def Info: Figures/means10_5.pdf  used on input line 395.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means10_6.pdf, id=197, 462.52798pt x 346.89601pt>
+File: Figures/means10_6.pdf Graphic file (type pdf)
+<use Figures/means10_6.pdf>
+Package pdftex.def Info: Figures/means10_6.pdf  used on input line 396.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means10_7.pdf, id=198, 462.52798pt x 346.89601pt>
+File: Figures/means10_7.pdf Graphic file (type pdf)
+<use Figures/means10_7.pdf>
+Package pdftex.def Info: Figures/means10_7.pdf  used on input line 397.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means10_8.pdf, id=199, 462.52798pt x 346.89601pt>
+File: Figures/means10_8.pdf Graphic file (type pdf)
+<use Figures/means10_8.pdf>
+Package pdftex.def Info: Figures/means10_8.pdf  used on input line 398.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means10_9.pdf, id=200, 462.52798pt x 346.89601pt>
+File: Figures/means10_9.pdf Graphic file (type pdf)
+<use Figures/means10_9.pdf>
+Package pdftex.def Info: Figures/means10_9.pdf  used on input line 399.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 390--400
+
+ []
+
+[9 <./Figures/means5_0.pdf> <./Figures/means5_1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means5_1.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+> <./Figures/means5_2.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means5_2.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+> <./Figures/means5_3.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means5_3.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+> <./Figures/means5_4.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means5_4.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+> <./Figures/means10_0.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means10_0.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means10_1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means10_1.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means10_2.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means10_2.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means10_3.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means10_3.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means10_4.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means10_4.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means10_5.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means10_5.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means10_6.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means10_6.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means10_7.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means10_7.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means10_8.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means10_8.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>]
+<Figures/means20_0.pdf, id=388, 462.52798pt x 346.89601pt>
+File: Figures/means20_0.pdf Graphic file (type pdf)
+<use Figures/means20_0.pdf>
+Package pdftex.def Info: Figures/means20_0.pdf  used on input line 401.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_1.pdf, id=389, 462.52798pt x 346.89601pt>
+File: Figures/means20_1.pdf Graphic file (type pdf)
+<use Figures/means20_1.pdf>
+Package pdftex.def Info: Figures/means20_1.pdf  used on input line 402.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_2.pdf, id=390, 462.52798pt x 346.89601pt>
+File: Figures/means20_2.pdf Graphic file (type pdf)
+<use Figures/means20_2.pdf>
+Package pdftex.def Info: Figures/means20_2.pdf  used on input line 403.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_3.pdf, id=391, 462.52798pt x 346.89601pt>
+File: Figures/means20_3.pdf Graphic file (type pdf)
+<use Figures/means20_3.pdf>
+Package pdftex.def Info: Figures/means20_3.pdf  used on input line 404.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_4.pdf, id=392, 462.52798pt x 346.89601pt>
+File: Figures/means20_4.pdf Graphic file (type pdf)
+<use Figures/means20_4.pdf>
+Package pdftex.def Info: Figures/means20_4.pdf  used on input line 405.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_5.pdf, id=393, 462.52798pt x 346.89601pt>
+File: Figures/means20_5.pdf Graphic file (type pdf)
+<use Figures/means20_5.pdf>
+Package pdftex.def Info: Figures/means20_5.pdf  used on input line 406.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_6.pdf, id=394, 462.52798pt x 346.89601pt>
+File: Figures/means20_6.pdf Graphic file (type pdf)
+<use Figures/means20_6.pdf>
+Package pdftex.def Info: Figures/means20_6.pdf  used on input line 407.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_7.pdf, id=395, 462.52798pt x 346.89601pt>
+File: Figures/means20_7.pdf Graphic file (type pdf)
+<use Figures/means20_7.pdf>
+Package pdftex.def Info: Figures/means20_7.pdf  used on input line 408.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_8.pdf, id=396, 462.52798pt x 346.89601pt>
+File: Figures/means20_8.pdf Graphic file (type pdf)
+<use Figures/means20_8.pdf>
+Package pdftex.def Info: Figures/means20_8.pdf  used on input line 409.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_9.pdf, id=397, 462.52798pt x 346.89601pt>
+File: Figures/means20_9.pdf Graphic file (type pdf)
+<use Figures/means20_9.pdf>
+Package pdftex.def Info: Figures/means20_9.pdf  used on input line 410.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_10.pdf, id=398, 462.52798pt x 346.89601pt>
+File: Figures/means20_10.pdf Graphic file (type pdf)
+<use Figures/means20_10.pdf>
+Package pdftex.def Info: Figures/means20_10.pdf  used on input line 411.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_11.pdf, id=399, 462.52798pt x 346.89601pt>
+File: Figures/means20_11.pdf Graphic file (type pdf)
+<use Figures/means20_11.pdf>
+Package pdftex.def Info: Figures/means20_11.pdf  used on input line 412.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_12.pdf, id=400, 462.52798pt x 346.89601pt>
+File: Figures/means20_12.pdf Graphic file (type pdf)
+<use Figures/means20_12.pdf>
+Package pdftex.def Info: Figures/means20_12.pdf  used on input line 413.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_13.pdf, id=401, 462.52798pt x 346.89601pt>
+File: Figures/means20_13.pdf Graphic file (type pdf)
+<use Figures/means20_13.pdf>
+Package pdftex.def Info: Figures/means20_13.pdf  used on input line 414.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_14.pdf, id=402, 462.52798pt x 346.89601pt>
+File: Figures/means20_14.pdf Graphic file (type pdf)
+<use Figures/means20_14.pdf>
+Package pdftex.def Info: Figures/means20_14.pdf  used on input line 415.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_15.pdf, id=403, 462.52798pt x 346.89601pt>
+File: Figures/means20_15.pdf Graphic file (type pdf)
+<use Figures/means20_15.pdf>
+Package pdftex.def Info: Figures/means20_15.pdf  used on input line 416.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_16.pdf, id=404, 462.52798pt x 346.89601pt>
+File: Figures/means20_16.pdf Graphic file (type pdf)
+<use Figures/means20_16.pdf>
+Package pdftex.def Info: Figures/means20_16.pdf  used on input line 417.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_17.pdf, id=405, 462.52798pt x 346.89601pt>
+File: Figures/means20_17.pdf Graphic file (type pdf)
+<use Figures/means20_17.pdf>
+Package pdftex.def Info: Figures/means20_17.pdf  used on input line 418.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_18.pdf, id=406, 462.52798pt x 346.89601pt>
+File: Figures/means20_18.pdf Graphic file (type pdf)
+<use Figures/means20_18.pdf>
+Package pdftex.def Info: Figures/means20_18.pdf  used on input line 419.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means20_19.pdf, id=407, 462.52798pt x 346.89601pt>
+File: Figures/means20_19.pdf Graphic file (type pdf)
+<use Figures/means20_19.pdf>
+Package pdftex.def Info: Figures/means20_19.pdf  used on input line 420.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 401--421
+
+ []
+
+[10 <./Figures/means10_9.pdf> <./Figures/means20_0.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_0.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_1.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_2.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_2.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_3.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_3.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_4.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_4.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_5.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_5.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_6.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_6.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_7.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_7.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_8.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_8.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_9.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_9.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/means20_10.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_10.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means20_11.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_11.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>]
+<Figures/error++5.pdf, id=582, 462.52798pt x 346.89601pt>
+File: Figures/error++5.pdf Graphic file (type pdf)
+<use Figures/error++5.pdf>
+Package pdftex.def Info: Figures/error++5.pdf  used on input line 428.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+<Figures/error++10.pdf, id=583, 462.52798pt x 346.89601pt>
+File: Figures/error++10.pdf Graphic file (type pdf)
+<use Figures/error++10.pdf>
+Package pdftex.def Info: Figures/error++10.pdf  used on input line 429.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+<Figures/error++20.pdf, id=584, 462.52798pt x 346.89601pt>
+File: Figures/error++20.pdf Graphic file (type pdf)
+<use Figures/error++20.pdf>
+Package pdftex.def Info: Figures/error++20.pdf  used on input line 430.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--431
+
+ []
+
+[11 <./Figures/means20_12.pdf> <./Figures/means20_13.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_13.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means20_14.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_14.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means20_15.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_15.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means20_16.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_16.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means20_17.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_17.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means20_18.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_18.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means20_19.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means20_19.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>]
+<Figures/means++5_0.pdf, id=694, 462.52798pt x 346.89601pt>
+File: Figures/means++5_0.pdf Graphic file (type pdf)
+<use Figures/means++5_0.pdf>
+Package pdftex.def Info: Figures/means++5_0.pdf  used on input line 432.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++5_1.pdf, id=695, 462.52798pt x 346.89601pt>
+File: Figures/means++5_1.pdf Graphic file (type pdf)
+<use Figures/means++5_1.pdf>
+Package pdftex.def Info: Figures/means++5_1.pdf  used on input line 433.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++5_2.pdf, id=696, 462.52798pt x 346.89601pt>
+File: Figures/means++5_2.pdf Graphic file (type pdf)
+<use Figures/means++5_2.pdf>
+Package pdftex.def Info: Figures/means++5_2.pdf  used on input line 434.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++5_3.pdf, id=697, 462.52798pt x 346.89601pt>
+File: Figures/means++5_3.pdf Graphic file (type pdf)
+<use Figures/means++5_3.pdf>
+Package pdftex.def Info: Figures/means++5_3.pdf  used on input line 435.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++5_4.pdf, id=698, 462.52798pt x 346.89601pt>
+File: Figures/means++5_4.pdf Graphic file (type pdf)
+<use Figures/means++5_4.pdf>
+Package pdftex.def Info: Figures/means++5_4.pdf  used on input line 436.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 432--437
+
+ []
+
+[12 <./Figures/error++5.pdf> <./Figures/error++10.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/error++10.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./Figures/error++20.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/error++20.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>]
+<Figures/means++10_0.pdf, id=775, 462.52798pt x 346.89601pt>
+File: Figures/means++10_0.pdf Graphic file (type pdf)
+<use Figures/means++10_0.pdf>
+Package pdftex.def Info: Figures/means++10_0.pdf  used on input line 438.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++10_1.pdf, id=776, 462.52798pt x 346.89601pt>
+File: Figures/means++10_1.pdf Graphic file (type pdf)
+<use Figures/means++10_1.pdf>
+Package pdftex.def Info: Figures/means++10_1.pdf  used on input line 439.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++10_2.pdf, id=777, 462.52798pt x 346.89601pt>
+File: Figures/means++10_2.pdf Graphic file (type pdf)
+<use Figures/means++10_2.pdf>
+Package pdftex.def Info: Figures/means++10_2.pdf  used on input line 440.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++10_3.pdf, id=778, 462.52798pt x 346.89601pt>
+File: Figures/means++10_3.pdf Graphic file (type pdf)
+<use Figures/means++10_3.pdf>
+Package pdftex.def Info: Figures/means++10_3.pdf  used on input line 441.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++10_4.pdf, id=779, 462.52798pt x 346.89601pt>
+File: Figures/means++10_4.pdf Graphic file (type pdf)
+<use Figures/means++10_4.pdf>
+Package pdftex.def Info: Figures/means++10_4.pdf  used on input line 442.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++10_5.pdf, id=780, 462.52798pt x 346.89601pt>
+File: Figures/means++10_5.pdf Graphic file (type pdf)
+<use Figures/means++10_5.pdf>
+Package pdftex.def Info: Figures/means++10_5.pdf  used on input line 443.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++10_6.pdf, id=781, 462.52798pt x 346.89601pt>
+File: Figures/means++10_6.pdf Graphic file (type pdf)
+<use Figures/means++10_6.pdf>
+Package pdftex.def Info: Figures/means++10_6.pdf  used on input line 444.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++10_7.pdf, id=782, 462.52798pt x 346.89601pt>
+File: Figures/means++10_7.pdf Graphic file (type pdf)
+<use Figures/means++10_7.pdf>
+Package pdftex.def Info: Figures/means++10_7.pdf  used on input line 445.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++10_8.pdf, id=783, 462.52798pt x 346.89601pt>
+File: Figures/means++10_8.pdf Graphic file (type pdf)
+<use Figures/means++10_8.pdf>
+Package pdftex.def Info: Figures/means++10_8.pdf  used on input line 446.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++10_9.pdf, id=784, 462.52798pt x 346.89601pt>
+File: Figures/means++10_9.pdf Graphic file (type pdf)
+<use Figures/means++10_9.pdf>
+Package pdftex.def Info: Figures/means++10_9.pdf  used on input line 447.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 438--448
+
+ []
+
+[13 <./Figures/means++5_0.pdf> <./Figures/means++5_1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++5_1.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means++5_2.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++5_2.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means++5_3.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++5_3.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means++5_4.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++5_4.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./Figures/means++10_0.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++10_0.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++10_1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++10_1.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++10_2.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++10_2.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++10_3.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++10_3.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++10_4.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++10_4.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++10_5.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++10_5.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++10_6.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++10_6.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++10_7.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++10_7.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++10_8.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++10_8.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+>]
+<Figures/means++20_0.pdf, id=973, 462.52798pt x 346.89601pt>
+File: Figures/means++20_0.pdf Graphic file (type pdf)
+<use Figures/means++20_0.pdf>
+Package pdftex.def Info: Figures/means++20_0.pdf  used on input line 449.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_1.pdf, id=974, 462.52798pt x 346.89601pt>
+File: Figures/means++20_1.pdf Graphic file (type pdf)
+<use Figures/means++20_1.pdf>
+Package pdftex.def Info: Figures/means++20_1.pdf  used on input line 450.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_2.pdf, id=975, 462.52798pt x 346.89601pt>
+File: Figures/means++20_2.pdf Graphic file (type pdf)
+<use Figures/means++20_2.pdf>
+Package pdftex.def Info: Figures/means++20_2.pdf  used on input line 451.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_3.pdf, id=976, 462.52798pt x 346.89601pt>
+File: Figures/means++20_3.pdf Graphic file (type pdf)
+<use Figures/means++20_3.pdf>
+Package pdftex.def Info: Figures/means++20_3.pdf  used on input line 452.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_4.pdf, id=977, 462.52798pt x 346.89601pt>
+File: Figures/means++20_4.pdf Graphic file (type pdf)
+<use Figures/means++20_4.pdf>
+Package pdftex.def Info: Figures/means++20_4.pdf  used on input line 453.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_5.pdf, id=978, 462.52798pt x 346.89601pt>
+File: Figures/means++20_5.pdf Graphic file (type pdf)
+<use Figures/means++20_5.pdf>
+Package pdftex.def Info: Figures/means++20_5.pdf  used on input line 454.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_6.pdf, id=979, 462.52798pt x 346.89601pt>
+File: Figures/means++20_6.pdf Graphic file (type pdf)
+<use Figures/means++20_6.pdf>
+Package pdftex.def Info: Figures/means++20_6.pdf  used on input line 455.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_7.pdf, id=980, 462.52798pt x 346.89601pt>
+File: Figures/means++20_7.pdf Graphic file (type pdf)
+<use Figures/means++20_7.pdf>
+Package pdftex.def Info: Figures/means++20_7.pdf  used on input line 456.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_8.pdf, id=981, 462.52798pt x 346.89601pt>
+File: Figures/means++20_8.pdf Graphic file (type pdf)
+<use Figures/means++20_8.pdf>
+Package pdftex.def Info: Figures/means++20_8.pdf  used on input line 457.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_9.pdf, id=982, 462.52798pt x 346.89601pt>
+File: Figures/means++20_9.pdf Graphic file (type pdf)
+<use Figures/means++20_9.pdf>
+Package pdftex.def Info: Figures/means++20_9.pdf  used on input line 458.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_10.pdf, id=983, 462.52798pt x 346.89601pt>
+File: Figures/means++20_10.pdf Graphic file (type pdf)
+<use Figures/means++20_10.pdf>
+Package pdftex.def Info: Figures/means++20_10.pdf  used on input line 459.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_11.pdf, id=984, 462.52798pt x 346.89601pt>
+File: Figures/means++20_11.pdf Graphic file (type pdf)
+<use Figures/means++20_11.pdf>
+Package pdftex.def Info: Figures/means++20_11.pdf  used on input line 460.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_12.pdf, id=985, 462.52798pt x 346.89601pt>
+File: Figures/means++20_12.pdf Graphic file (type pdf)
+<use Figures/means++20_12.pdf>
+Package pdftex.def Info: Figures/means++20_12.pdf  used on input line 461.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_13.pdf, id=986, 462.52798pt x 346.89601pt>
+File: Figures/means++20_13.pdf Graphic file (type pdf)
+<use Figures/means++20_13.pdf>
+Package pdftex.def Info: Figures/means++20_13.pdf  used on input line 462.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_14.pdf, id=987, 462.52798pt x 346.89601pt>
+File: Figures/means++20_14.pdf Graphic file (type pdf)
+<use Figures/means++20_14.pdf>
+Package pdftex.def Info: Figures/means++20_14.pdf  used on input line 463.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_15.pdf, id=988, 462.52798pt x 346.89601pt>
+File: Figures/means++20_15.pdf Graphic file (type pdf)
+<use Figures/means++20_15.pdf>
+Package pdftex.def Info: Figures/means++20_15.pdf  used on input line 464.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_16.pdf, id=989, 462.52798pt x 346.89601pt>
+File: Figures/means++20_16.pdf Graphic file (type pdf)
+<use Figures/means++20_16.pdf>
+Package pdftex.def Info: Figures/means++20_16.pdf  used on input line 465.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_17.pdf, id=990, 462.52798pt x 346.89601pt>
+File: Figures/means++20_17.pdf Graphic file (type pdf)
+<use Figures/means++20_17.pdf>
+Package pdftex.def Info: Figures/means++20_17.pdf  used on input line 466.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_18.pdf, id=991, 462.52798pt x 346.89601pt>
+File: Figures/means++20_18.pdf Graphic file (type pdf)
+<use Figures/means++20_18.pdf>
+Package pdftex.def Info: Figures/means++20_18.pdf  used on input line 467.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+<Figures/means++20_19.pdf, id=992, 462.52798pt x 346.89601pt>
+File: Figures/means++20_19.pdf Graphic file (type pdf)
+<use Figures/means++20_19.pdf>
+Package pdftex.def Info: Figures/means++20_19.pdf  used on input line 468.
+(pdftex.def)             Requested size: 144.54pt x 108.40472pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--469
+
+ []
+
+[14 <./Figures/means++10_9.pdf> <./Figures/means++20_0.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_0.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_1.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_1.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_2.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_2.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_3.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_3.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_4.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_4.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_5.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_5.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_6.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_6.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_7.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_7.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_8.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_8.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_9.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_9.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+> <./Figures/means++20_10.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_10.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./Figures/means++20_11.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_11.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+>] [15 <./Figures/means++20_12.pdf> <./Figures/means++20_13.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_13.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./Figures/means++20_14.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_14.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./Figures/means++20_15.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_15.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./Figures/means++20_16.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_16.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./Figures/means++20_17.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_17.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./Figures/means++20_18.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_18.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+> <./Figures/means++20_19.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./Figures/means++20_19.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+>]
+Overfull \hbox (43.79549pt too wide) in paragraph at lines 550--552
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[16] [17]
+<Figures/svd_err_mse.pdf, id=1282, 462.52798pt x 346.89601pt>
+File: Figures/svd_err_mse.pdf Graphic file (type pdf)
+<use Figures/svd_err_mse.pdf>
+Package pdftex.def Info: Figures/svd_err_mse.pdf  used on input line 631.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+ [18 <./Figures/svd_err_mse.pdf>]
+<Figures/loss_err_mse.pdf, id=1319, 462.52798pt x 346.89601pt>
+File: Figures/loss_err_mse.pdf Graphic file (type pdf)
+<use Figures/loss_err_mse.pdf>
+Package pdftex.def Info: Figures/loss_err_mse.pdf  used on input line 645.
+(pdftex.def)             Requested size: 289.07999pt x 216.82005pt.
+ [19 <./Figures/loss_err_mse.pdf>]
+Overfull \hbox (200.79686pt too wide) in paragraph at lines 707--708
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][] 
+ []
+
+
+Overfull \hbox (176.79662pt too wide) in paragraph at lines 708--710
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][] 
+ []
+
+
+Overfull \hbox (386.79875pt too wide) in paragraph at lines 710--711
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (356.79845pt too wide) in paragraph at lines 711--713
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][] 
+ []
+
+[20]
+Overfull \hbox (104.79588pt too wide) in paragraph at lines 746--747
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (80.79564pt too wide) in paragraph at lines 749--751
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (104.79588pt too wide) in paragraph at lines 761--763
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (134.79619pt too wide) in paragraph at lines 771--772
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[21]
+Overfull \hbox (98.79582pt too wide) in paragraph at lines 783--784
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][] 
+ []
+
+
+Overfull \hbox (74.79558pt too wide) in paragraph at lines 784--786
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][] 
+ []
+
+[22] (./hw3.aux) ) 
+Here is how much of TeX's memory you used:
+ 6746 strings out of 492640
+ 97531 string characters out of 6131738
+ 221755 words of memory out of 5000000
+ 10433 multiletter control sequences out of 15000+600000
+ 19936 words of font info for 75 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,9n,43p,635b,1741s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
+2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sym
+bols/msbm10.pfb>
+Output written on hw3.pdf (22 pages, 761252 bytes).
+PDF statistics:
+ 1441 PDF objects out of 1728 (max. 8388607)
+ 606 compressed objects within 7 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 401 words of extra memory for PDF output out of 10000 (max. 10000000)
+

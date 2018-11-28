@@ -157,11 +157,11 @@ where $K_{i,j} = k(x_i,x_j)$ is a kernel evaluation and $\lambda$ is the regular
 Report the values of $d$, $\gamma$, and the $\lambda$ values for both kernels.
 
 \textbf{Answer:}\\
-$d=34$\\
-$\lambda_\text{poly}=3$ \\
+$d=38$\\
+$\lambda_\text{poly}=4$ \\
 
-$\gamma= 34$\\
-$\lambda_\text{rbf}= 2$
+$\gamma= 19$\\
+$\lambda_\text{rbf}= 1$
 
   \item For a single plot per kernel, plot the original data $\{(x_i,y_i)\}_{i=1}^n$, the true $f(x)$, the $\widehat{f}(x)$ found through leave-one-out CV.
   
@@ -173,10 +173,6 @@ $\lambda_\text{rbf}= 2$
   \item Using the fixed hyperparameters you found in part a, we wish to build Bootstrap percentile confidence intervals for $\widehat{f}_{poly}(x)$ and $\widehat{f}_{rbf}(x)$ for all $x \in [0,1]$.
   Use the non-parametric bootstrap with $B=300$ datasets (i.e. randomly draw with replacement $n$ samples from $\{(x_i,y_i)\}_{i=1}^n$ and train an $\widehat{f}$, repeat this $B$ times) and find $5\%$ and $95\%$ percentiles (see Hastie, Tibshirani, Friedman Ch. 8.2 for a review). Plot the precentile curves on the plots from part b.
   \item Repeat all parts of this problem with $n=300$ (you may just use 10-fold CV instead of leave-one-out)
-  
-  \textbf{Answer:}\\
-\includegraphics[width=4 in]{Figures/poly_kernel_300.pdf}\\
-\includegraphics[width=4 in]{Figures/rbf_kernel_300.pdf}  
 
   \item Suppose $m$ additional samples are drawn i.i.d. the same way the first $n$ samples were drawn. Propose a statistical significance test to decide which learned function (which kernel) is the better fit (hint: if $\epsilon_i \sim \mathcal{N}(0,1)$, how is $\sum_i \epsilon_i^2$ distributed?).
 \end{enumerate}
@@ -233,7 +229,7 @@ def cross_val_poly(x, y):
 
                 except np.linalg.linalg.LinAlgError:
                     err = np.inf
-
+            print(err)
             errList[lamb, d] = err
             if err<bestErr:
                 bestD = d
@@ -272,14 +268,17 @@ def k_rbf(x, z, gam):
     k=np.zeros((x.size,z.size))
     for i in range(x.size):
         for j in range(z.size):
-            k[i,j] = np.exp(-gam*np.dot(x[i]-z[j], x[i]-z[j]))
+            if(z.size>1):
+                k[i,j] = np.exp(-gam*np.dot(x[i]-z[j], x[i]-z[j]))
+            else:
+                k[i]=np.exp(-gam*np.sum(np.dot(x[i]-z, x[i]-z)))
     return k
 
 
 def cross_val_rbf(x, y):
 
-    gam_n = 50
-    lamb_n = 50
+    gam_n = 20
+    lamb_n = 20
     errList = np.zeros((lamb_n, gam_n))
     bestErr=10**100
     bestGam=0
@@ -296,7 +295,7 @@ def cross_val_rbf(x, y):
 
                 except np.linalg.linalg.LinAlgError:
                     err = np.inf
-
+            print(err)
             errList[lamb, gam]=err
             if err<bestErr:
                 bestGam = gam
@@ -355,32 +354,8 @@ print('d: ' + str(d))
 print('Lambda: ' + str(lamb))
 # boot_f = boot_poly(x, y, d, lamb, 10)
 
-
-plt.figure()
-plt.plot(x, y, '.')
-plt.plot(x, f, '.')
-plt.legend(('Original Data', 'Estimate'))
-plt.title('Poly Kernel')
-plt.savefig('Figures/poly_kernel_300.pdf')
-plt.draw()
-
-gam, lamb =cross_val_rbf(x, y)
-a = regress(k_rbf(x, x, gam), y, lamb)
-f = np.dot(a, k_rbf(x, x, gam))
-
-
-print('Gamma: ' + str(gam))
-print('Lambda: ' + str(lamb))
-
-plt.figure()
-plt.plot(x, y, '.')
-plt.plot(x, f, '.')
-plt.legend('Original Data', 'Estimate')
-plt.title('RBF Kernel')
-plt.savefig('Figures/rbf_kernel_300.pdf')
-plt.draw()
-
 plt.show()
+
 
 
 

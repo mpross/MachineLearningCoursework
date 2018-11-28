@@ -49,7 +49,7 @@ def cross_val_poly(x, y):
 
                 except np.linalg.linalg.LinAlgError:
                     err = np.inf
-
+            print(err)
             errList[lamb, d] = err
             if err<bestErr:
                 bestD = d
@@ -97,7 +97,7 @@ def k_rbf(x, z, gam):
 
 def cross_val_rbf(x, y):
 
-    gam_n = 10
+    gam_n = 20
     lamb_n = 20
     errList = np.zeros((lamb_n, gam_n))
     bestErr=10**100
@@ -173,31 +173,6 @@ f = np.dot(a, k_poly(x, x, d))
 print('d: ' + str(d))
 print('Lambda: ' + str(lamb))
 # boot_f = boot_poly(x, y, d, lamb, 10)
-
-
-plt.figure()
-plt.plot(x, y, '.')
-plt.plot(x, f, '.')
-plt.legend(('Original Data', 'Estimate'))
-plt.title('Poly Kernel')
-plt.savefig('Figures/poly_kernel_300.pdf')
-plt.draw()
-
-gam, lamb =cross_val_rbf(x, y)
-a = regress(k_rbf(x, x, gam), y, lamb)
-f = np.dot(a, k_rbf(x, x, gam))
-
-
-print('Gamma: ' + str(gam))
-print('Lambda: ' + str(lamb))
-
-plt.figure()
-plt.plot(x, y, '.')
-plt.plot(x, f, '.')
-plt.legend('Original Data', 'Estimate')
-plt.title('RBF Kernel')
-plt.savefig('Figures/rbf_kernel_300.pdf')
-plt.draw()
 
 plt.show()
 
