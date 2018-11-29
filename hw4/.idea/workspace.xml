@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bec6cfa-8bbf-40f0-97c5-7621a8a91894" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/hw4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hw4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw4.log" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw4.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw4.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.synctex.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hw4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw4_2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,23 +35,23 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="171" />
-          <entry key="py" value="3574" />
+          <entry key="py" value="3896" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="3745" />
+          <entry key="Python" value="4067" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw4_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1650">
-              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+            <state relative-caret-position="-456">
+              <caret line="42" column="28" lean-forward="true" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -63,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hw4_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+            <state relative-caret-position="237">
+              <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -90,13 +86,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/hw4_3.py" />
         <option value="$PROJECT_DIR$/hw4_2.py" />
+        <option value="$PROJECT_DIR$/hw4_3.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="960" />
     <option name="y" value="34" />
     <option name="width" value="960" />
     <option name="height" value="1005" />
@@ -144,7 +139,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.hw4_2">
+  <component name="RunManager" selected="Python.hw4_3">
     <configuration name="hw4_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="hw4" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -193,8 +188,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.hw4_2" />
         <item itemvalue="Python.hw4_3" />
+        <item itemvalue="Python.hw4_2" />
       </list>
     </recent_temporary>
   </component>
@@ -245,22 +240,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw4_3.py">
+    <entry file="file://$PROJECT_DIR$/hw4_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        <state relative-caret-position="-456">
+          <caret line="42" column="28" lean-forward="true" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hw4_2.py">
+    <entry file="file://$PROJECT_DIR$/hw4_3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+        <state relative-caret-position="237">
+          <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -139,6 +139,10 @@ For intuition, the penalizer $||D K \alpha||_1$ prefers functions $\widehat{f}$ 
 On your own (not necessary to report plots), plot $\widehat{f}$ for a variety values of $\gamma, \lambda_1, \lambda_2$ to see how they affect the solution.
 Use leave-one-out cross validation to find a good setting of $\gamma, \lambda_1, \lambda_2$. 
 Plot the original data $\{(x_i,y_i)\}_{i=1}^n$, the true $f(x)$, the $\widehat{f}(x)$ found through leave-one-out CV.
+
+\textbf{Answer:}\\
+\includegraphics{2_tv.pdf}
+
 \item We say a function $g$ over $\{1,\dots,n\}$ is non-decreasing if $g_i - g_{i-1} \geq 0$ for all $i$, or $D g \geq 0$ where the inequality applies elementwise.
 Perhaps due to domain knowledge, we know that the original unnoisy function we are trying to estimate is non-decreasing. 
 Let
@@ -152,6 +156,11 @@ On your own (not necessary to report plots), plot $\widehat{f}$ for a variety va
 Use leave-one-out cross validation to find a good setting of $\gamma, \lambda$. 
 Plot the original data $\{(x_i,y_i)\}_{i=1}^n$, the true $f(x)$, the $\widehat{f}(x)$ found through leave-one-out CV.
 Note that the defined constraint only forces $\widehat{f}$ to be monotonic on the training data, not over all $x \in [0,1]$, but it is instructive to think about how one might achieve this.
+
+\textbf{Answer:}\\
+\includegraphics{2_quad.pdf}
+
+
 \end{enumerate}
 
 
