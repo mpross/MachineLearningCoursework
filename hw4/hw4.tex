@@ -54,8 +54,7 @@
 \begin{document}
 \title{Homework \#4}
 \author{\normalsize{CSE 546: Machine Learning}\\
-\normalsize{Prof. Kevin Jamieson} \\
-\normalsize{Due: 12/4  11:59 PM}}
+\normalsize{Michael Ross} }
 \maketitle
 
 
@@ -115,6 +114,10 @@ In what follows let $k(x,z) = \exp(-\gamma \|x-z\|^2)$ where $\gamma > 0$ is a h
 where $K_{i,j} = k(x_i,x_j)$ is a kernel evaluation and $\lambda$ is the regularization constant.
 Plot the original data $\{(x_i,y_i)\}_{i=1}^n$, the true $f(x)$, the $\widehat{f}(x)$ found through leave-one-out CV.
 (Hint: start with the problem on the homepage of \url{http://www.cvxpy.org/} and modify it as needed.)
+
+\textbf{Answer:}\\
+\includegraphics{2_ls.pdf}
+
 \item Now let
 \[
   \widehat{\alpha} = \arg\min_\alpha \sum_{i=1}^n \ell_{huber}(y_i - \sum_{j=1}^n K_{i,j} \alpha_j) + \lambda \alpha^T K \alpha \ , \quad \quad \widehat{f}(x)=\sum_{i=1}^n \widehat{\alpha}_i k(x_i,x) 
@@ -122,6 +125,10 @@ Plot the original data $\{(x_i,y_i)\}_{i=1}^n$, the true $f(x)$, the $\widehat{f
 where $K_{i,j} = k(x_i,x_j)$ is a kernel evaluation and $\lambda$ is the regularization constant.
 Plot the original data $\{(x_i,y_i)\}_{i=1}^n$, the true $f(x)$, the $\widehat{f}(x)$ found through leave-one-out CV.
 (Hint: \texttt{huber} is a function in \texttt{cvxpy}.)
+
+\textbf{Answer:}\\
+\includegraphics{2_huber.pdf}
+
   \item The total variation (TV) of a real-valued function $g$ over $\{1,\dots,n\}$ is defined as $\int_{i=1}^{n-1} |g_i - g_{i-1}| = || D g||_1$ and is a common regularizer for de-noising a function (its two-dimensional counterpart is very popular for image de-noising or filling-in missing/damaged parts of photos).   
   Let
 \[
