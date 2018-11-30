@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0bec6cfa-8bbf-40f0-97c5-7621a8a91894" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.aux" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.log" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw4_3.py" afterDir="false" />
-    </list>
+    <list default="true" id="0bec6cfa-8bbf-40f0-97c5-7621a8a91894" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +203,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="34" width="1920" height="1005" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15864623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
