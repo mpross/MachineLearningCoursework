@@ -53,9 +53,9 @@ def leave1(x, y):
     lamb2Best=0
     # lambList = np.array(range(10, 20))/100
     # gamList = np.array(range(40, 100, 10))
-    lambList = np.random.uniform(35, 45, 10)/100
-    lamb2List = np.random.uniform(35, 45, 10)/100
-    gamList = np.random.uniform(1, 100, 5)
+    lambList = np.random.uniform(1, 10, 2)/100
+    lamb2List = np.random.uniform(1, 10, 2)/100
+    gamList = np.random.uniform(1000, 2000, 5)
 
     lambList.sort()
     gamList.sort()

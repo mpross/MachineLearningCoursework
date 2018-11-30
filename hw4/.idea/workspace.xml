@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bec6cfa-8bbf-40f0-97c5-7621a8a91894" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/hw4.log" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_quad.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2_quad.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw4_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw4_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw4_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw4_3.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,12 +35,12 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="171" />
-          <entry key="py" value="3896" />
+          <entry key="py" value="4112" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="4067" />
+          <entry key="Python" value="4283" />
         </counts>
       </usages-collector>
     </session>
@@ -50,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hw4_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-456">
-              <caret line="42" column="28" lean-forward="true" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+            <state relative-caret-position="921">
+              <caret line="152" column="20" selection-start-line="152" selection-start-column="20" selection-end-line="152" selection-end-column="20" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -62,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hw4_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+            <state relative-caret-position="147">
+              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -91,7 +91,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="4">
     <option name="y" value="34" />
     <option name="width" value="960" />
     <option name="height" value="1005" />
@@ -139,7 +139,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.hw4_3">
+  <component name="RunManager" selected="Python.hw4_2">
     <configuration name="hw4_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="hw4" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -188,8 +188,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.hw4_3" />
         <item itemvalue="Python.hw4_2" />
+        <item itemvalue="Python.hw4_3" />
       </list>
     </recent_temporary>
   </component>
@@ -207,22 +207,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="34" width="1920" height="1005" extended-state="6" />
+    <frame x="0" y="34" width="960" height="1005" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15864623" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32223415" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49603385" visible="true" weight="0.32740214" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49516648" visible="true" weight="0.32740214" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50396615" side_tool="true" visible="true" weight="0.32740214" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5048335" side_tool="true" visible="true" weight="0.32740214" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49867794" weight="0.32977462" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -242,8 +242,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hw4_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-456">
-          <caret line="42" column="28" lean-forward="true" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+        <state relative-caret-position="921">
+          <caret line="152" column="20" selection-start-line="152" selection-start-column="20" selection-end-line="152" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -252,8 +252,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hw4_3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        <state relative-caret-position="147">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>

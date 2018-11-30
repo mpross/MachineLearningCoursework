@@ -42,9 +42,46 @@ class logRegNet(nn.Module):
         self.fc1 = nn.Linear(3072, 10)
 
     def forward(self, x):
-        x = x.view(1, -1)
+        x = x.view(4, -1)
         x = self.fc1(x)
         return x
+
+
+class singleHidNet(nn.Module):
+
+    def __init__(self):
+        super(singleHidNet, self).__init__()
+
+        M = 10
+
+        self.fc1 = nn.Linear(3072, M)
+        self.fc2 = nn.Linear(M, 10)
+
+    def forward(self, x):
+        x = x.view(4, -1)
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
+
+
+class convNet(nn.Module):
+    def __init__(self):
+        super(convNet, self).__init__()
+
+        M=100
+        p=5
+        N=14
+
+        self.conv1 = nn.Conv2d(3, 6, p)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.fc1 = nn.Linear(M(33-p)**2/N**2, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = x.view(-1, M(33-p)**2/N**2)
+        x = self.fc1(x)
+        return x
+
 
 
 transform = transforms.Compose(
@@ -67,9 +104,9 @@ classes = ('plane', 'car', 'bird', 'cat',
 net = logRegNet()
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.5)
 
-epochLim = 2
+epochLim = 24
 
 testAcc = np.zeros(epochLim)
 trainAcc = np.zeros(epochLim)
@@ -132,4 +169,5 @@ plt.figure()
 plt.plot(range(epochLim), trainAcc)
 plt.plot(range(epochLim), testAcc)
 plt.legend(('Training Accuracy', 'Testing Accuracy'))
+plt.savefig('3_logReg.pdf')
 plt.show()
