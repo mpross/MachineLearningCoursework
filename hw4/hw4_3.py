@@ -52,7 +52,7 @@ class singleHidNet(nn.Module):
     def __init__(self):
         super(singleHidNet, self).__init__()
 
-        M = 10
+        M = 1000 #100
 
         self.fc1 = nn.Linear(3072, M)
         self.fc2 = nn.Linear(M, 10)
@@ -65,20 +65,22 @@ class singleHidNet(nn.Module):
 
 
 class convNet(nn.Module):
+
+    M = 1000
+    p = 5
+    N = 14
+
     def __init__(self):
         super(convNet, self).__init__()
 
-        M=100
-        p=5
-        N=14
 
-        self.conv1 = nn.Conv2d(3, 6, p)
-        self.pool = nn.MaxPool2d(2, 2)
-        self.fc1 = nn.Linear(M(33-p)**2/N**2, 10)
+        self.conv1 = nn.Conv2d(3, self.M, self.p)
+        self.pool = nn.MaxPool2d(self.N, self.N)
+        self.fc1 = nn.Linear(int(self.M*(33-self.p)**2/self.N**2), 10)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
-        x = x.view(-1, M(33-p)**2/N**2)
+        x = x.view(-1, int(self.M*(33-self.p)**2/self.N**2))
         x = self.fc1(x)
         return x
 
@@ -101,10 +103,10 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=4,
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-net = logRegNet()
+net = convNet()
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.5)
+optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.05)
 
 epochLim = 24
 
@@ -168,6 +170,8 @@ print('Finished Training')
 plt.figure()
 plt.plot(range(epochLim), trainAcc)
 plt.plot(range(epochLim), testAcc)
-plt.legend(('Training Accuracy', 'Testing Accuracy'))
-plt.savefig('3_logReg.pdf')
+plt.legend(('Training', 'Testing'))
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+plt.savefig('convNet.pdf')
 plt.show()

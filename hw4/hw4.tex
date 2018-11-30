@@ -204,11 +204,26 @@ For all of the following perform a hyperparameter selection (manually by hand, r
   x^{out} = W \vec(x^{in}) +b
   \end{align*} 
   where $x^{out} \in \R^{10}$, $x^{in} \in \R^{32 \times 32 \times 3}$, $W \in \R^{10 \times 3072}$, $b \in \R^{10}$ where $3072 = 32 \cdot 32 \cdot 3$. For a tensor $x \in \R^{a \times b \times c}$, we let $\vec(x) \in \R^{a b c}$ be the reshaped form of the tensor into a vector (in an arbitrary but consistent pattern). 
+  
+  \textbf{Answer:}\\
+  momentum: 0.05\\
+  learning rate: 0.001
+  
+  \includegraphics[]{3_logReg.pdf}
+  
   \item Fully connected output, 1 fully connected hidden layer: we will have one hidden layer denoted as $x^{hidden} \in \R^{M}$ where $M$ will be a hyperparameter you choose ($M$ could be in the hundreds). The nonlinearity applied to the hidden layer will be the relu ($\mathrm{relu}(x) = \max\{0,x\}$, elementwise). Conceptually, one could write this network as 
   \begin{align*}
   x^{out} = W_2 \mathrm{relu}(W_1 \vec(x^{in}) +b_1) + b_2
   \end{align*}
   where $W_1 \in \R^{M \times 3072}$, $b_1 \in \R^M$, $W_2 \in \R^{10 \times M}$, $b_2 \in \R^{10}$.
+  
+  \textbf{Answer:}\\
+  momentum: 0.05\\
+  learning rate: 0.001\\
+  M=1000
+  
+  \includegraphics[]{3_singHid.pdf}
+  
   \item Fully connected output, 1 convolutional layer with max-pool: for a convolutional layer $W_1$ with individual filters of size $p \times p \times 3$ and output size $M$ (reasonable choices are $M=100$, $p=5$) we have that $\mathrm{Conv2d}(x^{input}, W_1) \in \R^{(33-p) \times (33-p) \times M}$. 
   Each convolution will have its own offset applied to each of the output pixels of the convolution; we denote this as $\mathrm{Conv2d}(x^{input}, W) + b_1$ where $b_1$ is parameterized in $\R^M$.
   We will then apply a relu (relu doesn't change the tensor shape) and pool. 
@@ -219,6 +234,14 @@ For all of the following perform a hyperparameter selection (manually by hand, r
   \end{align*}
   where $W_2 \in \R^{10 \times M (\lfloor\frac{33-p}{N}\rfloor)^2}$, $b_2 \in \R^{10}$.
   The parameters $M,p,N$ (in addition to the step size and momentum) are all hyperparameters.
+  
+   \textbf{Answer:}\\
+  momentum: 0.05\\
+  learning rate: 0.001\\
+  M=1000
+  
+  \includegraphics[]{3_convNet.pdf}
+  
   \item (Extra credit: \grade{3}) Returning to the original network you were left with at the end of the tutorial \emph{Training a classifier}, tune the different hyperparameters (number of convolutional filters, filter sizes, dimensionality of the fully connected layers, stepsize, etc.) and train for many epochs to achieve a \emph{test accuracy} of at least 87\%. 
 \end{enumerate}
 The number of hyperparameters to tune in the last exercise combined with the slow training times hopefully gave you a taste of how difficult it is to construct good performing networks. 
