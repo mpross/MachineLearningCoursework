@@ -32,17 +32,16 @@ def kernel(x, z, gam):
 
 def calcD(n):
 
-    D = np.zeros((n-1, n))
+    D = np.zeros((n, n-1))
 
-    for i in range(0, n-1):
-        for j in range(0, n):
+    for i in range(0, n):
+        for j in range(0, n-1):
             if i == j:
                 D[i, j] = 1
 
             if i == j-1:
                 D[i, j] = -1
-
-    return D
+    return D.T
 
 
 def leave1(x, y):
@@ -53,9 +52,9 @@ def leave1(x, y):
     lamb2Best=0
     # lambList = np.array(range(10, 20))/100
     # gamList = np.array(range(40, 100, 10))
-    lambList = np.random.uniform(1, 10, 2)/100
-    lamb2List = np.random.uniform(1, 10, 2)/100
-    gamList = np.random.uniform(1000, 2000, 5)
+    lambList = np.random.uniform(1, 10, 10)/100
+    lamb2List = np.random.uniform(1, 10, 1)/100
+    gamList = np.random.uniform(150, 250, 10)
 
     lambList.sort()
     gamList.sort()
@@ -86,7 +85,7 @@ def leave1(x, y):
                 #     cp.sum_squares(np.delete(y, i) - np.sum(K * a)) +
                 #     lamb * cp.quad_form(a, K) + lamb2 * cp.norm1(D * (K * a)))
                 objective = cp.Minimize(cp.sum_squares(np.delete(y, i) - np.sum(K * a)) + lamb * cp.quad_form(a, K))
-                constraints = [D*(K*a) >= 0]
+                constraints = [cp.matmul(cp.matmul(D, K), a) >= 0]
 
                 # prob = cp.Problem(objective)
                 prob = cp.Problem(objective, constraints)
@@ -140,7 +139,7 @@ err = cp.sum_squares(y - np.sum(K * a))
 #                     cp.sum_squares(y - np.sum(K * a)) +
 #                     lamb * cp.quad_form(a, K) + lamb2 * cp.norm1(D * (K * a)))
 objective = cp.Minimize(cp.sum_squares(y - np.sum(K * a)) + lamb * cp.quad_form(a, K))
-constraints = [D*(K*a) >= 0]
+constraints = [cp.matmul(cp.matmul(D, K), a)>= 0]
 
 # prob = cp.Problem(objective)
 prob = cp.Problem(objective, constraints)

@@ -19,17 +19,17 @@ def imshow(img):
 class baseNet(nn.Module):
     def __init__(self):
         super(baseNet, self).__init__()
-        self.conv1 = nn.Conv2d(3, 6, 5)
-        self.pool = nn.MaxPool2d(2, 2)
-        self.conv2 = nn.Conv2d(6, 16, 5)
-        self.fc1 = nn.Linear(16 * 5 * 5, 120)
-        self.fc2 = nn.Linear(120, 84)
-        self.fc3 = nn.Linear(84, 10)
+        self.conv1 = nn.Conv2d(3, 100, 5)
+        self.pool = nn.MaxPool2d(2)
+        self.conv2 = nn.Conv2d(100, 100, 5)
+        self.fc1 = nn.Linear(100 * 5 * 5, 64)
+        self.fc2 = nn.Linear(64, 32)
+        self.fc3 = nn.Linear(32, 10)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
         x = self.pool(F.relu(self.conv2(x)))
-        x = x.view(-1, 16 * 5 * 5)
+        x = x.view(-1, 100 * 5 * 5)
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
@@ -39,7 +39,7 @@ class baseNet(nn.Module):
 class logRegNet(nn.Module):
     def __init__(self):
         super(logRegNet, self).__init__()
-        self.fc1 = nn.Linear(3072, 10)
+        self.fc1 = nn.Linear(3052, 10)
 
     def forward(self, x):
         x = x.view(4, -1)
@@ -54,7 +54,7 @@ class singleHidNet(nn.Module):
 
         M = 1000 #100
 
-        self.fc1 = nn.Linear(3072, M)
+        self.fc1 = nn.Linear(3052, M)
         self.fc2 = nn.Linear(M, 10)
 
     def forward(self, x):
@@ -66,7 +66,7 @@ class singleHidNet(nn.Module):
 
 class convNet(nn.Module):
 
-    M = 1000
+    M = 200
     p = 5
     N = 14
 
@@ -103,12 +103,12 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=4,
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-net = convNet()
+net = baseNet()
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.05)
+optimizer = optim.SGD(net.parameters(), lr=0.0005, momentum=0.5)
 
-epochLim = 24
+epochLim = 25
 
 testAcc = np.zeros(epochLim)
 trainAcc = np.zeros(epochLim)
@@ -173,5 +173,5 @@ plt.plot(range(epochLim), testAcc)
 plt.legend(('Training', 'Testing'))
 plt.ylabel('Accuracy')
 plt.xlabel('Epoch')
-plt.savefig('convNet.pdf')
+# plt.savefig('3_convNet.pdf')
 plt.show()
