@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0bec6cfa-8bbf-40f0-97c5-7621a8a91894" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_Quad.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_quad.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2_quad.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.aux" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.log" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4.tex" beforeDir="false" afterPath="$PROJECT_DIR$/hw4.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw4_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw4_3.py" afterDir="false" />
-    </list>
+    <list default="true" id="0bec6cfa-8bbf-40f0-97c5-7621a8a91894" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hw4_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="108" column="63" selection-start-line="108" selection-start-column="63" selection-end-line="108" selection-end-column="63" />
+            <state relative-caret-position="381">
+              <caret line="122" column="38" lean-forward="true" selection-start-line="122" selection-start-column="38" selection-end-line="122" selection-end-column="38" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -281,8 +270,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hw4_3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="108" column="63" selection-start-line="108" selection-start-column="63" selection-end-line="108" selection-end-column="63" />
+        <state relative-caret-position="381">
+          <caret line="122" column="38" lean-forward="true" selection-start-line="122" selection-start-column="38" selection-end-line="122" selection-end-column="38" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
