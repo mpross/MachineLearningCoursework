@@ -19,17 +19,17 @@ def imshow(img):
 class baseNet(nn.Module):
     def __init__(self):
         super(baseNet, self).__init__()
-        self.conv1 = nn.Conv2d(3, 100, 5)
+        self.conv1 = nn.Conv2d(3, 32, 5)
         self.pool = nn.MaxPool2d(2)
-        self.conv2 = nn.Conv2d(100, 100, 5)
-        self.fc1 = nn.Linear(100 * 5 * 5, 64)
+        self.conv2 = nn.Conv2d(32, 64, 5)
+        self.fc1 = nn.Linear(64 * 5 * 5, 64)
         self.fc2 = nn.Linear(64, 32)
         self.fc3 = nn.Linear(32, 10)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
         x = self.pool(F.relu(self.conv2(x)))
-        x = x.view(-1, 100 * 5 * 5)
+        x = x.view(-1, 64 * 5 * 5)
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
@@ -106,7 +106,7 @@ classes = ('plane', 'car', 'bird', 'cat',
 net = baseNet()
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(net.parameters(), lr=0.0005, momentum=0.5)
+optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.5)
 
 epochLim = 25
 
